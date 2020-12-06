@@ -81,11 +81,11 @@ export default class LavaSpotify {
             identifier: `ytsearch:${track.artists[0].name} - ${track.name}`
         }).toString();
 
-        return await (await fetch(`http://${this.node.host}:${this.node.port}/loadtracks?${params}`, {
+        return (await (await fetch(`http://${this.node.host}:${this.node.port}/loadtracks?${params}`, {
             headers: {
                 Authorization: this.node.password
             }
-        })).json() as LavalinkTrack;
+        })).json()).tracks[0] as LavalinkTrack;
     }
 
     private async requestToken(): Promise<void> {
