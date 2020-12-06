@@ -6,10 +6,9 @@ const spotifyPattern = /(?:https:\/\/open\.spotify\.com\/|spotify:)(album|playli
 export default class LavaSpotify {
     private readonly baseURL = "https://api.spotify.com/v1";
     private token: string | null = null;
+    private nextRequest?: NodeJS.Timeout;
 
-    public constructor(public node: LavalinkNode, public options: SpotifyOptions) {
-        void this.requestToken();
-    }
+    public constructor(public node: LavalinkNode, public options: SpotifyOptions) {}
 
     public load(url: string): Promise<LavalinkTrackResponse> {
         const typeFuncs = {
@@ -88,7 +87,10 @@ export default class LavaSpotify {
         })).json()).tracks[0] as LavalinkTrack;
     }
 
-    private async requestToken(): Promise<void> {
+    public async requestToken(): Promise<void> {
+        clearTimeout(this.nextRequest!);
+        delete this.nextRequest;
+
         const auth = Buffer.from(`${this.options.clientID}:${this.options.clientSecret}`).toString("base64");
 
         const { access_token, token_type, expires_in } = await (await fetch("https://accounts.spotify.com/api/token", {
@@ -102,6 +104,6 @@ export default class LavaSpotify {
 
         this.token = `${token_type} ${access_token}`;
         // eslint-disable-next-line @typescript-eslint/no-misused-promises
-        setTimeout(this.requestToken.bind(this), expires_in * 1000);
+        this.nextRequest = setTimeout(this.requestToken.bind(this), expires_in * 1000);
     }
 }

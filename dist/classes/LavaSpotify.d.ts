@@ -4,6 +4,7 @@ export default class LavaSpotify {
     options: SpotifyOptions;
     private readonly baseURL;
     private token;
+    private nextRequest?;
     constructor(node: LavalinkNode, options: SpotifyOptions);
     load(url: string): Promise<LavalinkTrackResponse>;
     getAlbum(id: string): Promise<SpotifyAlbum>;
@@ -16,5 +17,5 @@ export default class LavaSpotify {
     getTrack(id: string, asLavaTrack: false): Promise<SpotifyTrack>;
     getTrack(id: string, asLavaTrack: true): Promise<LavalinkTrackResponse>;
     private resolve;
-    private requestToken;
+    requestToken(): Promise<void>;
 }
