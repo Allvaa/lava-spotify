@@ -1,0 +1,72 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "node": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": 12,
+        "sourceType": "module",
+        "project": "tsconfig.json"
+    },
+    "plugins": [
+        "@typescript-eslint"
+    ],
+    "rules": {
+        "@typescript-eslint/explicit-member-accessibility": "error",
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/explicit-function-return-type": "error",
+        "@typescript-eslint/no-unsafe-call": "off",
+        "@typescript-eslint/no-unsafe-assignment": "off",
+        "@typescript-eslint/no-unsafe-member-access": "off",
+        "@typescript-eslint/no-non-null-assertion": "off",
+        "@typescript-eslint/restrict-template-expressions": [
+            "warn", { "allowAny": true, "allowBoolean": true }
+        ],
+        "@typescript-eslint/array-type": [
+            "warn", { "default": "array-simple", "readonly": "array-simple" }
+        ],
+        "@typescript-eslint/adjacent-overload-signatures": "warn",
+        "@typescript-eslint/await-thenable": "warn",
+        "@typescript-eslint/no-unused-vars": [
+            "warn", { 
+                "varsIgnorePattern": "^_", "argsIgnorePattern": "^_",
+                "caughtErrors": "all", "caughtErrorsIgnorePattern": "^_"
+            }
+        ],
+        "@typescript-eslint/ban-types": "error",
+        "@typescript-eslint/prefer-readonly": "warn",
+        "@typescript-eslint/comma-dangle": "error",
+        "@typescript-eslint/comma-spacing": [
+            "warn", { "before": false, "after": true }
+        ],
+        "@typescript-eslint/consistent-indexed-object-style": ["warn", "record"],
+        "@typescript-eslint/consistent-type-definitions": ["warn", "interface"],
+        "@typescript-eslint/consistent-type-imports": "warn",
+        "@typescript-eslint/dot-notation": "error",
+        "@typescript-eslint/func-call-spacing": ["warn", "never"],
+        "@typescript-eslint/indent": ["warn", 4],
+        "@typescript-eslint/keyword-spacing": "warn",
+        "@typescript-eslint/lines-between-class-members": [
+            "warn", "always", { "exceptAfterSingleLine": true }
+        ],
+        "@typescript-eslint/member-delimiter-style": "error",
+        "@typescript-eslint/semi": "error",
+        "@typescript-eslint/no-duplicate-imports": "error",
+        "quotes": ["warn", "double"],
+        "no-empty-function": [
+            "warn", { "allow": [ "constructors" ] }
+        ],
+        "operator-linebreak": ["warn", "before"],
+        "implicit-arrow-linebreak": ["warn", "beside"],
+        "eol-last": "error",
+        "camelcase": "warn",
+        "brace-style": ["warn", "1tbs"]
+    }
+}
