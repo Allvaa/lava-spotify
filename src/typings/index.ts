@@ -41,11 +41,8 @@ export interface SpotifyArtist {
     name: string;
 }
 
-export interface SpotifyAlbum extends SpotifyPlaylist {
+export interface SpotifyAlbum {
     artists: SpotifyArtist[];
-}
-
-export interface SpotifyPlaylist {
     id: string;
     images: {
         height: number;
@@ -60,9 +57,33 @@ export interface SpotifyPlaylist {
     };
 }
 
+export interface SpotifyPlaylist {
+    id: string;
+    images: {
+        height: number;
+        url: string;
+        width: number;
+    };
+    name: string;
+    tracks: {
+        items: SpotifyPlaylistTrack[];
+        next: string | null;
+        previous: string | null;
+    };
+}
+
 export interface SpotifyTrack {
     artists: SpotifyArtist[];
     href: string;
     id: string;
     name: string;
+}
+
+export interface SpotifyPlaylistTrack {
+    added_at: Date;
+    added_by: {
+        display_name: string;
+        id: string;
+    };
+    track: SpotifyTrack;
 }

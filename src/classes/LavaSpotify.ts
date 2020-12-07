@@ -58,7 +58,7 @@ export default class LavaSpotify {
             playlistInfo: {
                 name: playlist.name
             },
-            tracks: await Promise.all(playlist.tracks.items.map(x => this.resolve(x)))
+            tracks: await Promise.all(playlist.tracks.items.map(x => this.resolve(x.track)))
         }: playlist;
     }
 
