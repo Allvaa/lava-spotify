@@ -92,22 +92,29 @@ export default class LavaSpotify {
     }
 
     public async requestToken(): Promise<void> {
-        clearTimeout(this.nextRequest!);
-        delete this.nextRequest;
+        if (this.nextRequest) return;
 
         const auth = Buffer.from(`${this.options.clientID}:${this.options.clientSecret}`).toString("base64");
 
-        const { access_token, token_type, expires_in } = await (await fetch("https://accounts.spotify.com/api/token", {
-            method: "POST",
-            body: "grant_type=client_credentials",
-            headers: {
-                Authorization: `Basic ${auth}`,
-                "Content-Type": "application/x-www-form-urlencoded"
-            }
-        })).json();
+        try {
+            const { access_token, token_type, expires_in, error } = await (await fetch("https://accounts.spotify.com/api/token", {
+                method: "POST",
+                body: "grant_type=client_credentials",
+                headers: {
+                    Authorization: `Basic ${auth}`,
+                    "Content-Type": "application/x-www-form-urlencoded"
+                }
+            })).json();
 
-        this.token = `${token_type} ${access_token}`;
-        // eslint-disable-next-line @typescript-eslint/no-misused-promises
-        this.nextRequest = setTimeout(this.requestToken.bind(this), expires_in * 1000);
+            if (error === "invalid_client") return Promise.reject(new Error("Invalid Spotify client."));
+
+            this.token = `${token_type} ${access_token}`;
+            this.nextRequest = setTimeout(() => {
+                delete this.nextRequest;
+                void this.requestToken();
+            }, expires_in * 1000);
+        } catch {
+            await this.requestToken();
+        }
     }
 }
