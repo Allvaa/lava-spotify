@@ -50,6 +50,7 @@ export interface SpotifyAlbum {
         next: string | null;
         previous: string | null;
     };
+    error?: SpotifyError;
 }
 export interface SpotifyPlaylist {
     id: string;
@@ -64,12 +65,14 @@ export interface SpotifyPlaylist {
         next: string | null;
         previous: string | null;
     };
+    error?: SpotifyError;
 }
 export interface SpotifyTrack {
     artists: SpotifyArtist[];
     href: string;
     id: string;
     name: string;
+    error?: SpotifyError;
 }
 export interface SpotifyPlaylistTrack {
     added_at: Date;
@@ -78,4 +81,8 @@ export interface SpotifyPlaylistTrack {
         id: string;
     };
     track: SpotifyTrack;
+}
+export interface SpotifyError {
+    status: number;
+    message: string;
 }

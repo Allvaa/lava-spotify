@@ -55,6 +55,7 @@ export interface SpotifyAlbum {
         next: string | null;
         previous: string | null;
     };
+    error?: SpotifyError;
 }
 
 export interface SpotifyPlaylist {
@@ -70,6 +71,7 @@ export interface SpotifyPlaylist {
         next: string | null;
         previous: string | null;
     };
+    error?: SpotifyError;
 }
 
 export interface SpotifyTrack {
@@ -77,6 +79,7 @@ export interface SpotifyTrack {
     href: string;
     id: string;
     name: string;
+    error?: SpotifyError;
 }
 
 export interface SpotifyPlaylistTrack {
@@ -86,4 +89,9 @@ export interface SpotifyPlaylistTrack {
         id: string;
     };
     track: SpotifyTrack;
+}
+
+export interface SpotifyError {
+    status: number;
+    message: string;
 }

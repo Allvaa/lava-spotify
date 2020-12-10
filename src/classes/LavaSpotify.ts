@@ -35,11 +35,11 @@ export default class LavaSpotify {
         })).json();
 
         return asLavaTrack ? {
-            loadType: "PLAYLIST_LOADED",
+            loadType: album.error ? "NO_MATCHES" : "PLAYLIST_LOADED",
             playlistInfo: {
                 name: album.name
             },
-            tracks: await Promise.all(album.tracks.items.map(x => this.resolve(x)))
+            tracks: album.error ? [] : await Promise.all(album.tracks.items.map(x => this.resolve(x)))
         }: album;
     }
 
@@ -54,11 +54,11 @@ export default class LavaSpotify {
         })).json();
 
         return asLavaTrack ? {
-            loadType: "PLAYLIST_LOADED",
+            loadType: playlist.error ? "NO_MATCHES" : "PLAYLIST_LOADED",
             playlistInfo: {
                 name: playlist.name
             },
-            tracks: await Promise.all(playlist.tracks.items.map(x => this.resolve(x.track)))
+            tracks: playlist.error ? [] : await Promise.all(playlist.tracks.items.map(x => this.resolve(x.track)))
         }: playlist;
     }
 
@@ -73,9 +73,9 @@ export default class LavaSpotify {
         })).json();
 
         return asLavaTrack ? {
-            loadType: "TRACK_LOADED",
+            loadType: track.error ? "NO_MATCHES" : "TRACK_LOADED",
             playlistInfo: {},
-            tracks: [await this.resolve(track)]
+            tracks: track.error? [] : [await this.resolve(track)]
         }: track;
     }
 
