@@ -1,4 +1,4 @@
-import type { LavalinkNode, LavalinkTrack, LavalinkTrackResponse, SpotifyAlbum, SpotifyOptions, SpotifyPlaylist, SpotifyTrack } from "../typings";
+import type { LavalinkNode, LavalinkTrack, LavalinkTrackResponse, SpotifyAlbum, SpotifyOptions, SpotifyPlaylist, SpotifyPlaylistTrack, SpotifyTrack } from "../typings";
 import fetch from "node-fetch";
 
 const spotifyPattern = /^(?:https:\/\/open\.spotify\.com\/|spotify:)(album|playlist|track)(?:[/:])([A-Za-z0-9]+).*$/;
@@ -40,7 +40,7 @@ export default class LavaSpotify {
                 name: album.name
             },
             tracks: album.error ? [] : await Promise.all(album.tracks.items.map(x => this.resolve(x)))
-        }: album;
+        } : album;
     }
 
     public async getPlaylist(id: string): Promise<SpotifyPlaylist>;
@@ -53,13 +53,15 @@ export default class LavaSpotify {
             }
         })).json();
 
+        const playlistTracks = asLavaTrack ? await this.getPlaylistTracks(playlist) : playlist.tracks.items;
+
         return asLavaTrack ? {
             loadType: playlist.error ? "NO_MATCHES" : "PLAYLIST_LOADED",
             playlistInfo: {
                 name: playlist.name
             },
-            tracks: playlist.error ? [] : await Promise.all(playlist.tracks.items.map(x => this.resolve(x.track)))
-        }: playlist;
+            tracks: playlist.error ? [] : await Promise.all(playlistTracks.map(x => this.resolve(x.track)))
+        } : playlist;
     }
 
     public async getTrack(id: string): Promise<SpotifyTrack>;
@@ -75,8 +77,32 @@ export default class LavaSpotify {
         return asLavaTrack ? {
             loadType: track.error ? "NO_MATCHES" : "TRACK_LOADED",
             playlistInfo: {},
-            tracks: track.error? [] : [await this.resolve(track)]
-        }: track;
+            tracks: track.error ? [] : [await this.resolve(track)]
+        } : track;
+    }
+
+    private async getPlaylistTracks(playlist: {
+        tracks: {
+            items: SpotifyPlaylistTrack[];
+            next: string | null;
+        };
+    }): Promise<SpotifyPlaylistTrack[]> {
+        if (!playlist.tracks.next) return playlist.tracks.items;
+        const { items, next }: { items: SpotifyPlaylistTrack[]; next: string | null } = await (await fetch(playlist.tracks.next, {
+            headers: {
+                Authorization: this.token!
+            }
+        })).json();
+
+        const mergedPlaylistTracks = playlist.tracks.items.concat(items);
+
+        if (next) return this.getPlaylistTracks({
+            tracks: {
+                items: mergedPlaylistTracks,
+                next
+            }
+        });
+        else return mergedPlaylistTracks;
     }
 
     private async resolve(track: SpotifyTrack): Promise<LavalinkTrack> {

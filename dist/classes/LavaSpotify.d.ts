@@ -17,6 +17,7 @@ export default class LavaSpotify {
     getTrack(id: string): Promise<SpotifyTrack>;
     getTrack(id: string, asLavaTrack: false): Promise<SpotifyTrack>;
     getTrack(id: string, asLavaTrack: true): Promise<LavalinkTrackResponse>;
+    private getPlaylistTracks;
     private resolve;
     requestToken(): Promise<void>;
 }
