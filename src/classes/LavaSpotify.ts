@@ -60,7 +60,7 @@ export default class LavaSpotify {
             playlistInfo: {
                 name: playlist.name
             },
-            tracks: playlist.error ? [] : await Promise.all(playlistTracks.map(x => this.resolve(x.track)))
+            tracks: playlist.error ? [] : (await Promise.all(playlistTracks.map(x => this.resolve(x.track)))).filter(Boolean)
         } : playlist;
     }
 
@@ -105,16 +105,18 @@ export default class LavaSpotify {
         else return mergedPlaylistTracks;
     }
 
-    private async resolve(track: SpotifyTrack): Promise<LavalinkTrack> {
+    private async resolve(track: SpotifyTrack): Promise<LavalinkTrack | undefined> {
         const params = new URLSearchParams({
             identifier: `ytsearch:${track.artists[0].name} - ${track.name}`
         }).toString();
 
-        return (await (await fetch(`http://${this.node.host}:${this.node.port}/loadtracks?${params}`, {
+        const result = (await (await fetch(`http://${this.node.host}:${this.node.port}/loadtracks?${params}`, {
             headers: {
                 Authorization: this.node.password
             }
-        })).json()).tracks[0] as LavalinkTrack;
+        })).json());
+
+        return result.tracks ? result.tracks[0] as LavalinkTrack : undefined;
     }
 
     public async requestToken(): Promise<void> {
