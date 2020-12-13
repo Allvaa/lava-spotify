@@ -1,7 +1,7 @@
 import type { LavalinkNode, LavalinkTrack, LavalinkTrackResponse, SpotifyAlbum, SpotifyOptions, SpotifyPlaylist, SpotifyPlaylistTrack, SpotifyTrack } from "../typings";
 import fetch from "node-fetch";
 
-const spotifyPattern = /^(?:https:\/\/open\.spotify\.com\/|spotify:)(album|playlist|track)(?:[/:])([A-Za-z0-9]+).*$/;
+const spotifyPattern = /^(?:https:\/\/open\.spotify\.com\/(?:user\/[A-Za-z0-9]+\/)?|spotify:)(album|playlist|track)(?:[/:])([A-Za-z0-9]+).*$/;
 
 export default class LavaSpotify {
     private readonly baseURL = "https://api.spotify.com/v1";
