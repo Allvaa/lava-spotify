@@ -1,12 +1,24 @@
-import { ClientOptions } from "./typings";
+import { ClientOptions, NodeOptions } from "./typings";
 import request from "node-superfetch";
+import Node from "./structures/Node";
 
 export default class Client {
     public readonly baseURL = "https://api.spotify.com/v1";
+    public nodes = new Map<string, Node>();
     public token: string | null = null;
     private nextRequest?: NodeJS.Timeout;
 
-    public constructor(public options: ClientOptions) {}
+    public constructor(public options: ClientOptions, nodesOpt: NodeOptions[]) {
+        for (const nodeOpt of nodesOpt) this.addNode(nodeOpt);
+    }
+
+    public addNode(options: NodeOptions): void {
+        this.nodes.set(options.host, new Node(this, options));
+    }
+
+    public getNode(host: string): Node | undefined {
+        return this.nodes.get(host);
+    }
 
     public async requestToken(): Promise<void> {
         if (this.nextRequest) return;
