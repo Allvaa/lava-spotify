@@ -77,7 +77,6 @@
         "operator-linebreak": ["warn", "before"],
         "implicit-arrow-linebreak": ["warn", "beside"],
         "eol-last": "error",
-        "camelcase": "warn",
         "brace-style": ["warn", "1tbs"],
         "semi-spacing": "warn",
         "key-spacing": "warn",
