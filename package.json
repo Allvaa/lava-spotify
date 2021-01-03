@@ -1,21 +1,23 @@
 {
   "name": "lava-spotify",
-  "version": "1.2.2",
+  "version": "2.0.0-dev",
   "description": "Spotify album, playlist, and track resolver for Lavalink.",
   "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "scripts": {
+    "release": "standard-version"
+  },
   "repository": "https://github.com/Allvaa/lava-spotify",
   "author": "Allvaa",
   "license": "MIT",
   "dependencies": {
-    "node-fetch": "^2.6.1"
+    "node-superfetch": "^0.1.10"
   },
   "devDependencies": {
-    "@types/node": "^14.14.10",
-    "@types/node-fetch": "^2.5.7",
-    "@typescript-eslint/eslint-plugin": "^4.9.0",
-    "@typescript-eslint/parser": "^4.9.0",
-    "eslint": "^7.15.0",
-    "typescript": "^4.1.2"
+    "@types/node": "^14.14.19",
+    "@typescript-eslint/eslint-plugin": "^4.11.1",
+    "@typescript-eslint/parser": "^4.11.1",
+    "eslint": "^7.17.0",
+    "standard-version": "^9.1.0",
+    "typescript": "^4.1.3"
   }
 }

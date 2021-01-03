@@ -47,8 +47,10 @@
             "warn", { "before": false, "after": true }
         ],
         "@typescript-eslint/consistent-indexed-object-style": ["warn", "record"],
+        "@typescript-eslint/consistent-type-assertions": [
+            "warn", { "assertionStyle": "as", "objectLiteralTypeAssertions": "allow-as-parameter" }
+        ],
         "@typescript-eslint/consistent-type-definitions": ["warn", "interface"],
-        "@typescript-eslint/consistent-type-imports": "warn",
         "@typescript-eslint/dot-notation": "error",
         "@typescript-eslint/func-call-spacing": ["warn", "never"],
         "@typescript-eslint/indent": ["warn", 4],
@@ -57,8 +59,17 @@
             "warn", "always", { "exceptAfterSingleLine": true }
         ],
         "@typescript-eslint/member-delimiter-style": "error",
-        "@typescript-eslint/semi": "error",
+        "@typescript-eslint/member-ordering": "warn",
+        "@typescript-eslint/method-signature-style": "error",
+        "@typescript-eslint/no-base-to-string": "error",
         "@typescript-eslint/no-duplicate-imports": "error",
+        "@typescript-eslint/no-extra-parens": "error",
+        "@typescript-eslint/semi": "error",
+        "@typescript-eslint/no-extraneous-class": [
+            "error", { "allowStaticOnly": true, "allowWithDecorator": true }
+        ],
+        "@typescript-eslint/no-invalid-void-type": "error",
+        "@typescript-eslint/type-annotation-spacing": "warn",
         "quotes": ["warn", "double"],
         "no-empty-function": [
             "warn", { "allow": [ "constructors" ] }
@@ -66,6 +77,22 @@
         "operator-linebreak": ["warn", "before"],
         "implicit-arrow-linebreak": ["warn", "beside"],
         "eol-last": "error",
-        "brace-style": ["warn", "1tbs"]
+        "camelcase": "warn",
+        "brace-style": ["warn", "1tbs"],
+        "semi-spacing": "warn",
+        "key-spacing": "warn",
+        "object-curly-spacing": ["warn", "always"],
+        "array-bracket-spacing": "warn",
+        "space-in-parens": ["warn", "never"],
+        "computed-property-spacing": ["warn", "never"],
+        "arrow-spacing": "warn",
+        "generator-star-spacing": ["warn", "after"],
+        "switch-colon-spacing": "warn",
+        "space-before-blocks": "warn",
+        "spaced-comment": "warn",
+        "template-curly-spacing": "warn",
+        "yield-star-spacing": ["warn", "after"],
+        "space-before-function-paren": ["warn", "never"],
+        "no-multi-spaces": "warn"
     }
 }

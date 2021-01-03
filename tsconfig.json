@@ -1,18 +1,18 @@
 {
-    "compilerOptions": {
-        "target": "ES6",
-        "module": "commonjs",
-        "declaration": true,
-        "outDir": "dist",
-        "rootDir": "src",
-        "strict": true,
-        "typeRoots": [
-            "node_modules/@types",
-            "src/typings"
-        ],
-        "esModuleInterop": true,
-        "inlineSourceMap": true,
-        "skipLibCheck": true,
-        "resolveJsonModule": true,
-    }
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "commonjs",
+    "declaration": true,
+    "outDir": "dist",
+    "rootDir": "src",
+    "strict": true,
+    "typeRoots": [
+      "node_modules/@types",
+      "src/typings"
+    ],
+    "esModuleInterop": true,
+    "inlineSourceMap": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+  }
 }
