@@ -4,4 +4,6 @@ export default class Resolver {
     client: import("..").Client;
     constructor(node: Node);
     get token(): string;
+    getAlbum(id: string): Promise<any>;
+    private resolve;
 }
