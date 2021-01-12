@@ -4,3 +4,4 @@ export interface ClientOptions {
 }
 
 export * from "./Lavalink";
+export * from "./Spotify";

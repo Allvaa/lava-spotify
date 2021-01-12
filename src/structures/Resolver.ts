@@ -1,5 +1,6 @@
 import Node from "./Node";
 import request from "node-superfetch";
+import { LavalinkTrack, LavalinkTrackResponse, SpotifyAlbum, SpotifyTrack } from "../typings";
 
 export default class Resolver {
     public client = this.node.client;
@@ -10,12 +11,12 @@ export default class Resolver {
         return this.client.token!;
     }
 
-    public async getAlbum(id: string): Promise<any> {
-        let album: any;
+    public async getAlbum(id: string): Promise<LavalinkTrackResponse> {
+        let album: SpotifyAlbum | undefined;
         try {
             album = (await request
                 .get(`${this.client.baseURL}/albums/${id}`)
-                .set("Authorization", this.token)).body;
+                .set("Authorization", this.token)).body as SpotifyAlbum;
         } catch { /**/ }
 
         return {
@@ -23,20 +24,22 @@ export default class Resolver {
             playlistInfo: {
                 name: album?.name
             },
-            tracks: album ? await Promise.all(album.tracks.items.map((x: any) => this.resolve(x))) : []
+            tracks: album
+                ? (await Promise.all(album.tracks.items.map(x => this.resolve(x)))).filter(Boolean) as LavalinkTrack[]
+                : []
         };
     }
 
-    private async resolve(track: any): Promise<any> {
+    private async resolve(track: SpotifyTrack): Promise<LavalinkTrack | undefined> {
         const params = new URLSearchParams({
             identifier: `ytsearch:${track.artists[0].name} - ${track.name}`
         }).toString();
 
-        const { body }: any = await request
+        // @ts-expect-error 2322
+        const { body }: { body: LavalinkTrackResponse } = await request
             .get(`http://${this.node.options.host}:${this.node.options.port}/loadtracks?${params}`)
             .set("Authorization", this.node.options.password);
 
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-        return body.tracks ? body.tracks[0] : undefined;
+        return body.exception ? undefined : body.tracks[0];
     }
 }

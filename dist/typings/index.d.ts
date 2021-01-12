@@ -3,3 +3,4 @@ export interface ClientOptions {
     clientSecret: string;
 }
 export * from "./Lavalink";
+export * from "./Spotify";
