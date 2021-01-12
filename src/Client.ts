@@ -14,11 +14,11 @@ export default class Client {
     }
 
     public addNode(options: NodeOptions): void {
-        this.nodes.set(options.host, new Node(this, options));
+        this.nodes.set(options.id, new Node(this, options));
     }
 
-    public getNode(host: string): Node | undefined {
-        return this.nodes.get(host);
+    public getNode(id: string): Node | undefined {
+        return this.nodes.get(id);
     }
 
     public isValidURL(url: string): boolean {
