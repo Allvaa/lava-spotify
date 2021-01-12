@@ -6,6 +6,7 @@ export default class Client {
     public readonly baseURL = "https://api.spotify.com/v1";
     public nodes = new Map<string, Node>();
     public token: string | null = null;
+    public spotifyPattern = /^(?:https:\/\/open\.spotify\.com\/(?:user\/[A-Za-z0-9]+\/)?|spotify:)(album|playlist|track)(?:[/:])([A-Za-z0-9]+).*$/;
     private nextRequest?: NodeJS.Timeout;
 
     public constructor(public options: ClientOptions, nodesOpt: NodeOptions[]) {
@@ -18,6 +19,10 @@ export default class Client {
 
     public getNode(host: string): Node | undefined {
         return this.nodes.get(host);
+    }
+
+    public isValidURL(url: string): boolean {
+        return this.spotifyPattern.test(url);
     }
 
     public async requestToken(): Promise<void> {
