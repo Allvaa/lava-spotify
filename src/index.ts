@@ -1,2 +1,3 @@
-import LavaSpotify from "./classes/LavaSpotify";
-export { LavaSpotify };
+import Client from "./Client";
+
+export { Client };
