@@ -26,10 +26,6 @@ export default class Client {
         this.nodes.set(options.id, new Node(this, options));
     }
 
-    public getNode(id: string): Node | undefined {
-        return this.nodes.get(id);
-    }
-
     public isValidURL(url: string): boolean {
         return this.spotifyPattern.test(url);
     }
