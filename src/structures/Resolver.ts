@@ -11,6 +11,12 @@ export default class Resolver {
         return this.client.token!;
     }
 
+    public get playlistPageLoadLimit(): number {
+        return this.client.options.playlistPageLoadLimit === 0
+            ? Infinity
+            : this.client.options.playlistPageLoadLimit ?? 2;
+    }
+
     public async getAlbum(id: string): Promise<LavalinkTrackResponse> {
         let album: SpotifyAlbum | undefined;
         try {
@@ -38,14 +44,14 @@ export default class Resolver {
                 .set("Authorization", this.token)).body as SpotifyPlaylist;
         } catch { /**/ }
 
+        const playlistTracks = playlist ? await this.getPlaylistTracks(playlist) : [];
+
         return {
             loadType: playlist ? "PLAYLIST_LOADED" : "NO_MATCHES",
             playlistInfo: {
                 name: playlist?.name
             },
-            tracks: playlist
-                ? (await Promise.all(playlist.tracks.items.map(x => this.resolve(x.track)))).filter(Boolean) as LavalinkTrack[]
-                : []
+            tracks: (await Promise.all(playlistTracks.map(x => this.resolve(x.track)))).filter(Boolean) as LavalinkTrack[]
         };
     }
 
@@ -62,6 +68,32 @@ export default class Resolver {
             playlistInfo: {},
             tracks: track ? [(await this.resolve(track))!] : []
         };
+    }
+
+    private async getPlaylistTracks(playlist: {
+        tracks: {
+            items: Array<{ track: SpotifyTrack }>;
+            next: string | null;
+        };
+    }, currPage = 0): Promise<Array<{ track: SpotifyTrack }>> {
+        if (!playlist.tracks.next) return playlist.tracks.items;
+        currPage++;
+
+        const { body }: any = await request
+            .get(playlist.tracks.next)
+            .set("Authorization", this.token);
+
+        const { items, next }: { items: Array<{ track: SpotifyTrack }>; next: string | null } = body;
+
+        const mergedPlaylistTracks = playlist.tracks.items.concat(items);
+
+        if (next && currPage < this.playlistPageLoadLimit) return this.getPlaylistTracks({
+            tracks: {
+                items: mergedPlaylistTracks,
+                next
+            }
+        }, currPage);
+        else return mergedPlaylistTracks;
     }
 
     private async resolve(track: SpotifyTrack): Promise<LavalinkTrack | undefined> {
