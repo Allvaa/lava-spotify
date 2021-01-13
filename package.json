@@ -1,6 +1,6 @@
 {
   "name": "lava-spotify",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Spotify album, playlist, and track resolver for Lavalink.",
   "main": "dist/index.js",
   "scripts": {
