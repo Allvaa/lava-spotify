@@ -23,5 +23,6 @@ export interface SpotifyPlaylist {
 
 export interface SpotifyTrack {
     artists: SpotifyArtist[];
+    id: string;
     name: string;
 }

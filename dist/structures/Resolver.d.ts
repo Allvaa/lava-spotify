@@ -1,8 +1,9 @@
 import Node from "./Node";
-import { LavalinkTrackResponse } from "../typings";
+import { LavalinkTrack, LavalinkTrackResponse } from "../typings";
 export default class Resolver {
     node: Node;
     client: import("..").Client;
+    cache: Map<string, LavalinkTrack>;
     constructor(node: Node);
     get token(): string;
     get playlistPageLoadLimit(): number;
