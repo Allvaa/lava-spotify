@@ -15,7 +15,7 @@ export default class Resolver {
     public get playlistPageLoadLimit(): number {
         return this.client.options.playlistPageLoadLimit === 0
             ? Infinity
-            : this.client.options.playlistPageLoadLimit ?? 2;
+            : this.client.options.playlistPageLoadLimit!;
     }
 
     public async getAlbum(id: string): Promise<LavalinkTrackResponse> {
