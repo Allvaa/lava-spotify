@@ -91,7 +91,9 @@
         "spaced-comment": "warn",
         "template-curly-spacing": "warn",
         "yield-star-spacing": ["warn", "after"],
-        "space-before-function-paren": ["warn", "never"],
+        "space-before-function-paren": [
+            "warn", {"anonymous": "never", "named": "never", "asyncArrow": "always"}
+        ],
         "no-multi-spaces": "warn"
     }
 }
