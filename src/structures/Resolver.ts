@@ -73,8 +73,8 @@ export default class Resolver {
             items: Array<{ track: SpotifyTrack }>;
             next: string | null;
         };
-    }, currPage = 0): Promise<Array<{ track: SpotifyTrack }>> {
-        if (!playlist.tracks.next) return playlist.tracks.items;
+    }, currPage = 1): Promise<Array<{ track: SpotifyTrack }>> {
+        if (!playlist.tracks.next || currPage >= this.playlistPageLoadLimit) return playlist.tracks.items;
         currPage++;
 
         const { body }: any = await request
