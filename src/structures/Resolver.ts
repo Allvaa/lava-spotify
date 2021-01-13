@@ -1,6 +1,7 @@
 import Node from "./Node";
 import request from "node-superfetch";
 import { LavalinkTrack, LavalinkTrackResponse, SpotifyAlbum, SpotifyPlaylist, SpotifyTrack } from "../typings";
+import Util from "../Util";
 
 export default class Resolver {
     public client = this.node.client;
@@ -18,12 +19,11 @@ export default class Resolver {
     }
 
     public async getAlbum(id: string): Promise<LavalinkTrackResponse> {
-        let album: SpotifyAlbum | undefined;
-        try {
-            album = (await request
+        const album = await Util.tryPromise(async () => {
+            return (await request
                 .get(`${this.client.baseURL}/albums/${id}`)
                 .set("Authorization", this.token)).body as SpotifyAlbum;
-        } catch { /**/ }
+        });
 
         return {
             loadType: album ? "PLAYLIST_LOADED" : "NO_MATCHES",
@@ -37,12 +37,11 @@ export default class Resolver {
     }
 
     public async getPlaylist(id: string): Promise<LavalinkTrackResponse> {
-        let playlist: SpotifyPlaylist | undefined;
-        try {
-            playlist = (await request
+        const playlist = await Util.tryPromise(async () => {
+            return (await request
                 .get(`${this.client.baseURL}/playlists/${id}`)
                 .set("Authorization", this.token)).body as SpotifyPlaylist;
-        } catch { /**/ }
+        });
 
         const playlistTracks = playlist ? await this.getPlaylistTracks(playlist) : [];
 
@@ -56,12 +55,11 @@ export default class Resolver {
     }
 
     public async getTrack(id: string): Promise<LavalinkTrackResponse> {
-        let track: SpotifyTrack | undefined;
-        try {
-            track = (await request
+        const track = await Util.tryPromise(async () => {
+            return (await request
                 .get(`${this.client.baseURL}/tracks/${id}`)
                 .set("Authorization", this.token)).body as SpotifyTrack;
-        } catch { /**/ }
+        });
 
         return {
             loadType: track ? "TRACK_LOADED" : "NO_MATCHES",
