@@ -49,6 +49,21 @@ export default class Resolver {
         };
     }
 
+    public async getTrack(id: string): Promise<LavalinkTrackResponse> {
+        let track: SpotifyTrack | undefined;
+        try {
+            track = (await request
+                .get(`${this.client.baseURL}/tracks/${id}`)
+                .set("Authorization", this.token)).body as SpotifyTrack;
+        } catch { /**/ }
+
+        return {
+            loadType: track ? "TRACK_LOADED" : "NO_MATCHES",
+            playlistInfo: {},
+            tracks: track ? [(await this.resolve(track))!] : []
+        };
+    }
+
     private async resolve(track: SpotifyTrack): Promise<LavalinkTrack | undefined> {
         try {
             const params = new URLSearchParams({
@@ -61,8 +76,7 @@ export default class Resolver {
                 .set("Authorization", this.node.options.password);
 
             return body.exception ? undefined : body.tracks[0];
-        } catch (e) {
-            console.log(e);
+        } catch {
             return undefined;
         }
     }

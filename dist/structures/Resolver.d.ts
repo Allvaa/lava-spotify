@@ -7,5 +7,6 @@ export default class Resolver {
     get token(): string;
     getAlbum(id: string): Promise<LavalinkTrackResponse>;
     getPlaylist(id: string): Promise<LavalinkTrackResponse>;
+    getTrack(id: string): Promise<LavalinkTrackResponse>;
     private resolve;
 }
