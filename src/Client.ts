@@ -43,7 +43,7 @@ export default class Client {
                 void this.requestToken();
             }, expires_in * 1000);
         } catch (e) {
-            if (e.status == 400) {
+            if (e.status === 400) {
                 return Promise.reject(new Error("Invalid Spotify client."));
             }
             await this.requestToken();
