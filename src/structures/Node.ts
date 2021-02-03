@@ -1,4 +1,4 @@
-import Client from "../Client";
+import LavasfyClient from "../Client";
 import { LavalinkTrackResponse, NodeOptions } from "../typings";
 import Resolver from "./Resolver";
 
@@ -10,7 +10,7 @@ export default class Node {
         track: this.resolver.getTrack.bind(this.resolver)
     };
 
-    public constructor(public client: Client, public options: NodeOptions) {}
+    public constructor(public client: LavasfyClient, public options: NodeOptions) {}
 
     public load(url: string): Promise<LavalinkTrackResponse> {
         const [, type, id] = this.client.spotifyPattern.exec(url) ?? [];

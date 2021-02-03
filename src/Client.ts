@@ -9,7 +9,7 @@ const defaultClientOptions: ClientOptions = {
     filterAudioOnlyResult: true
 };
 
-export default class Client {
+export default class LavasfyClient {
     public readonly baseURL = "https://api.spotify.com/v1";
     public options: ClientOptions;
     public nodes = new Map<string, Node>();

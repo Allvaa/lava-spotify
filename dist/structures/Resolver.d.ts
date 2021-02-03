@@ -2,7 +2,7 @@ import Node from "./Node";
 import { LavalinkTrack, LavalinkTrackResponse } from "../typings";
 export default class Resolver {
     node: Node;
-    client: import("..").Client;
+    client: import("..").LavasfyClient;
     cache: Map<string, LavalinkTrack>;
     constructor(node: Node);
     get token(): string;
