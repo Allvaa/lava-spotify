@@ -3,6 +3,7 @@
   "version": "2.1.1",
   "description": "Spotify album, playlist, and track resolver for Lavalink.",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
     "lint": "eslint --ignore-path .gitignore \"**/*.ts\"",
