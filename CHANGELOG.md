@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.2](https://github.com/Allvaa/lava-spotify/compare/v2.1.1...v2.1.2) (2021-02-03)
+
+
+### Bug Fixes
+
+* files not included ([1e5aa3b](https://github.com/Allvaa/lava-spotify/commit/1e5aa3b2d22e82bd7e376eb992e370d6c13c118d))
+* missing typings ([b489039](https://github.com/Allvaa/lava-spotify/commit/b489039815d9feb6fa352e5bb8e1d1b8644222f2))
+
 ### [2.1.1](https://github.com/Allvaa/lava-spotify/compare/v2.1.0...v2.1.1) (2021-02-03)
 
 
