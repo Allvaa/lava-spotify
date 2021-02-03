@@ -1,4 +1,4 @@
-# lavasfy
+# lavasfy [![npm](https://img.shields.io/npm/v/lavasfy)](https://npmjs.com/package/lavasfy "lavasfy")
 Spotify album, playlist, and track resolver for Lavalink.
 
 ## Installing
