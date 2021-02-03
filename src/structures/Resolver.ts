@@ -97,7 +97,7 @@ export default class Resolver {
 
     private async resolve(track: SpotifyTrack): Promise<LavalinkTrack | undefined> {
         const cached = this.cache.get(track.id);
-        if (cached) return cached;
+        if (cached) return Util.structuredClone(cached);
 
         try {
             const params = new URLSearchParams({
@@ -109,9 +109,9 @@ export default class Resolver {
                 .get(`http://${this.node.options.host}:${this.node.options.port}/loadtracks?${params}`)
                 .set("Authorization", this.node.options.password);
 
-            if (body.tracks.length) this.cache.set(track.id, body.tracks[0]);
+            if (body.tracks.length) this.cache.set(track.id, Object.freeze(body.tracks[0]));
 
-            return body.tracks[0];
+            return Util.structuredClone(body.tracks[0]);
         } catch {
             return undefined;
         }

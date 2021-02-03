@@ -1,3 +1,4 @@
+import { deserialize, serialize } from "v8";
 export default class Util {
     public static try<T>(fn: () => T): T | undefined {
         try {
@@ -13,5 +14,9 @@ export default class Util {
         } catch {
             return undefined;
         }
+    }
+
+    public static structuredClone<T>(obj: T): T {
+        return deserialize(serialize(obj)) as T;
     }
 }
