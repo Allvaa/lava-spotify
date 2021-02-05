@@ -6,7 +6,8 @@ const defaultClientOptions: ClientOptions = {
     clientID: "",
     clientSecret: "",
     playlistPageLoadLimit: 2,
-    filterAudioOnlyResult: true
+    filterAudioOnlyResult: true,
+    alwaysUseYTMusic: false
 };
 
 export default class LavasfyClient {
