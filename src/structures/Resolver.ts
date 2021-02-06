@@ -62,10 +62,12 @@ export default class Resolver {
                 .set("Authorization", this.token)).body as SpotifyTrack;
         });
 
+        const lavaTrack = track && await this.resolve(track);
+
         return {
-            loadType: track ? "TRACK_LOADED" : "NO_MATCHES",
+            loadType: lavaTrack ? "TRACK_LOADED" : "NO_MATCHES",
             playlistInfo: {},
-            tracks: track ? [(await this.resolve(track))!] : []
+            tracks: lavaTrack ? [lavaTrack] : []
         };
     }
 
