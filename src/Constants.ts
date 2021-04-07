@@ -3,6 +3,6 @@ import { ClientOptions } from "./typings";
 export const DefaultClientOptions: ClientOptions = {
     clientID: "",
     clientSecret: "",
-    playlistPageLoadLimit: 2,
-    filterAudioOnlyResult: false
+    playlistPageLimit: 2,
+    audioOnlyResults: false
 };
