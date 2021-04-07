@@ -6,7 +6,7 @@ export default class Resolver {
     cache: Map<string, LavalinkTrack>;
     constructor(node: Node);
     get token(): string;
-    get playlistPageLoadLimit(): number;
+    get playlistPageLimit(): number;
     getAlbum(id: string): Promise<LavalinkTrackResponse>;
     getPlaylist(id: string): Promise<LavalinkTrackResponse>;
     getTrack(id: string): Promise<LavalinkTrackResponse>;

@@ -1,8 +1,8 @@
 export interface ClientOptions {
     clientID: string;
     clientSecret: string;
-    playlistPageLoadLimit?: number;
-    filterAudioOnlyResult?: boolean;
+    playlistPageLimit?: number;
+    audioOnlyResults?: boolean;
 }
 export * from "./Lavalink";
 export * from "./Spotify";

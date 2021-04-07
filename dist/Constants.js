@@ -4,7 +4,7 @@ exports.DefaultClientOptions = void 0;
 exports.DefaultClientOptions = {
     clientID: "",
     clientSecret: "",
-    playlistPageLoadLimit: 2,
-    filterAudioOnlyResult: false
+    playlistPageLimit: 2,
+    audioOnlyResults: false
 };
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiQ29uc3RhbnRzLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vc3JjL0NvbnN0YW50cy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7QUFFYSxRQUFBLG9CQUFvQixHQUFrQjtJQUMvQyxRQUFRLEVBQUUsRUFBRTtJQUNaLFlBQVksRUFBRSxFQUFFO0lBQ2hCLHFCQUFxQixFQUFFLENBQUM7SUFDeEIscUJBQXFCLEVBQUUsS0FBSztDQUMvQixDQUFDIn0=
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiQ29uc3RhbnRzLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vc3JjL0NvbnN0YW50cy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7QUFFYSxRQUFBLG9CQUFvQixHQUFrQjtJQUMvQyxRQUFRLEVBQUUsRUFBRTtJQUNaLFlBQVksRUFBRSxFQUFFO0lBQ2hCLGlCQUFpQixFQUFFLENBQUM7SUFDcEIsZ0JBQWdCLEVBQUUsS0FBSztDQUMxQixDQUFDIn0=
