@@ -1,24 +1,19 @@
 import { ClientOptions, NodeOptions } from "./typings";
 import request from "node-superfetch";
 import Node from "./structures/Node";
-
-const defaultClientOptions: ClientOptions = {
-    clientID: "",
-    clientSecret: "",
-    playlistPageLoadLimit: 2,
-    filterAudioOnlyResult: true
-};
+import Util from "./Util";
+import { DefaultClientOptions } from "./Constants";
 
 export default class LavasfyClient {
     public readonly baseURL = "https://api.spotify.com/v1";
-    public options: ClientOptions;
+    public options: Readonly<ClientOptions>;
     public nodes = new Map<string, Node>();
     public token: string | null = null;
     public spotifyPattern = /^(?:https:\/\/open\.spotify\.com\/(?:user\/[A-Za-z0-9]+\/)?|spotify:)(album|playlist|track)(?:[/:])([A-Za-z0-9]+).*$/;
     private nextRequest?: NodeJS.Timeout;
 
     public constructor(options: ClientOptions, nodesOpt: NodeOptions[]) {
-        this.options = { ...defaultClientOptions, ...options };
+        this.options = Object.freeze(Util.mergeDefault(DefaultClientOptions, options));
         for (const nodeOpt of nodesOpt) this.addNode(nodeOpt);
     }
 
