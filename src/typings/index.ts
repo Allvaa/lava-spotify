@@ -3,6 +3,7 @@ export interface ClientOptions {
     clientSecret: string;
     playlistPageLimit?: number;
     audioOnlyResults?: boolean;
+    useSpotifyMetadata?: boolean;
 }
 
 export * from "./Lavalink";

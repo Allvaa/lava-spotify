@@ -113,11 +113,13 @@ export default class Resolver {
 
             if (body.tracks.length) {
                 const lavaTrack = body.tracks[0];
-                Object.assign(lavaTrack.info, {
-                    title: track.name,
-                    author: track.artists.map(artist => artist.name).join(", "),
-                    uri: track.external_urls.spotify
-                });
+                if (this.client.options.useSpotifyMetadata) {
+                    Object.assign(lavaTrack.info, {
+                        title: track.name,
+                        author: track.artists.map(artist => artist.name).join(", "),
+                        uri: track.external_urls.spotify
+                    });
+                }
                 this.cache.set(track.id, Object.freeze(lavaTrack));
             }
 

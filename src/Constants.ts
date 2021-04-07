@@ -4,5 +4,6 @@ export const DefaultClientOptions: ClientOptions = {
     clientID: "",
     clientSecret: "",
     playlistPageLimit: 2,
-    audioOnlyResults: false
+    audioOnlyResults: false,
+    useSpotifyMetadata: false
 };
