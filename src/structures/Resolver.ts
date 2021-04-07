@@ -111,11 +111,15 @@ export default class Resolver {
                 .get(`http://${this.node.options.host}:${this.node.options.port}/loadtracks?${params}`)
                 .set("Authorization", this.node.options.password);
 
-            if (body.tracks.length) 
-                body.tracks[0].info.title = track.name;
-                body.tracks[0].info.author = track.artists.map(spotify => spotify.name).join(", ");
-                body.tracks[0].info.uri = track.external_urls.spotify;
-                this.cache.set(track.id, Object.freeze(body.tracks[0]));
+            if (body.tracks.length) {
+                const lavaTrack = body.tracks[0];
+                Object.assign(lavaTrack.info, {
+                    title: track.name,
+                    author: track.artists.map(artist => artist.name).join(", "),
+                    uri: track.external_urls.spotify
+                });
+                this.cache.set(track.id, Object.freeze(lavaTrack));
+            }
 
             return Util.structuredClone(body.tracks[0]);
         } catch {
