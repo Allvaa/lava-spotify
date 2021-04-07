@@ -2,7 +2,7 @@ import { ClientOptions, NodeOptions } from "./typings";
 import Node from "./structures/Node";
 export default class LavasfyClient {
     readonly baseURL = "https://api.spotify.com/v1";
-    options: ClientOptions;
+    options: Readonly<ClientOptions>;
     nodes: Map<string, Node>;
     token: string | null;
     spotifyPattern: RegExp;
