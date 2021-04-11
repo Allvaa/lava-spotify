@@ -5,14 +5,30 @@ import Util from "./Util";
 import { DefaultClientOptions } from "./Constants";
 
 export default class LavasfyClient {
-    public readonly baseURL = "https://api.spotify.com/v1";
+    public readonly baseURL!: string;
     public options: Readonly<ClientOptions>;
     public nodes = new Map<string, Node>();
-    public token: string | null = null;
-    public spotifyPattern = /^(?:https:\/\/open\.spotify\.com\/(?:user\/[A-Za-z0-9]+\/)?|spotify:)(album|playlist|track)(?:[/:])([A-Za-z0-9]+).*$/;
+    public token!: string | null;
+    public spotifyPattern!: RegExp;
     private nextRequest?: NodeJS.Timeout;
 
     public constructor(options: ClientOptions, nodesOpt: NodeOptions[]) {
+        Object.defineProperties(this, {
+            baseURL: {
+                value: "https://api.spotify.com/v1",
+                configurable: false,
+                enumerable: true,
+                writable: false
+            },
+            token: {
+                value: null,
+                configurable: true
+            },
+            spotifyPattern: {
+                value: /^(?:https:\/\/open\.spotify\.com\/(?:user\/[A-Za-z0-9]+\/)?|spotify:)(album|playlist|track)(?:[/:])([A-Za-z0-9]+).*$/
+            }
+        });
+
         this.options = Object.freeze(Util.mergeDefault(DefaultClientOptions, options));
         for (const nodeOpt of nodesOpt) this.addNode(nodeOpt);
     }
@@ -37,11 +53,13 @@ export default class LavasfyClient {
                 })
                 .send("grant_type=client_credentials");
 
-            this.token = `${token_type} ${access_token}`;
-            this.nextRequest = setTimeout(() => {
-                delete this.nextRequest;
-                void this.requestToken();
-            }, expires_in * 1000);
+            Object.defineProperty(this, "token", { value: `${token_type} ${access_token}`, configurable: true });
+            Object.defineProperty(this, "nextRequest", {
+                value: setTimeout(() => {
+                    delete this.nextRequest;
+                    void this.requestToken();
+                }, expires_in * 1000)
+            });
         } catch (e) {
             if (e.status === 400) {
                 return Promise.reject(new Error("Invalid Spotify client."));
