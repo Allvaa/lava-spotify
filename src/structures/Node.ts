@@ -18,7 +18,7 @@ export default class Node {
 
     public constructor(public client: LavasfyClient, options: NodeOptions) {
         Object.defineProperties(this, {
-            id: { value: options.id },
+            id: { value: options.id, enumerable: true },
             host: { value: options.host },
             port: { value: options.port },
             password: { value: options.password }
