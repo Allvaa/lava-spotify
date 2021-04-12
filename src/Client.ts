@@ -5,28 +5,25 @@ import Util from "./Util";
 import { DefaultClientOptions } from "./Constants";
 
 export default class LavasfyClient {
-    public readonly baseURL!: string;
     public options: Readonly<ClientOptions>;
     public nodes = new Map<string, Node>();
-    public token!: string | null;
-    public spotifyPattern!: RegExp;
+    public readonly baseURL!: string;
+    public readonly spotifyPattern!: RegExp;
+    public readonly token!: string | null;
+
     private nextRequest?: NodeJS.Timeout;
 
     public constructor(options: ClientOptions, nodesOpt: NodeOptions[]) {
-        Object.defineProperties(this, {
-            baseURL: {
-                value: "https://api.spotify.com/v1",
-                configurable: false,
-                enumerable: true,
-                writable: false
-            },
-            token: {
-                value: null,
-                configurable: true
-            },
-            spotifyPattern: {
-                value: /^(?:https:\/\/open\.spotify\.com\/(?:user\/[A-Za-z0-9]+\/)?|spotify:)(album|playlist|track)(?:[/:])([A-Za-z0-9]+).*$/
-            }
+        Object.defineProperty(this, "baseURL", {
+            enumerable: true,
+            value: "https://api.spotify.com/v1"
+        });
+        Object.defineProperty(this, "spotifyPattern", {
+            value: /^(?:https:\/\/open\.spotify\.com\/(?:user\/[A-Za-z0-9]+\/)?|spotify:)(album|playlist|track)(?:[/:])([A-Za-z0-9]+).*$/
+        });
+        Object.defineProperty(this, "token", {
+            configurable: true,
+            value: null
         });
 
         this.options = Object.freeze(Util.mergeDefault(DefaultClientOptions, options));
@@ -53,8 +50,9 @@ export default class LavasfyClient {
                 })
                 .send("grant_type=client_credentials");
 
-            Object.defineProperty(this, "token", { value: `${token_type} ${access_token}`, configurable: true });
+            Object.defineProperty(this, "token", { value: `${token_type} ${access_token}` });
             Object.defineProperty(this, "nextRequest", {
+                configurable: true,
                 value: setTimeout(() => {
                     delete this.nextRequest;
                     void this.requestToken();

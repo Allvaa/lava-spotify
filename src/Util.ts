@@ -1,4 +1,5 @@
 import { deserialize, serialize } from "v8";
+
 export default class Util {
     public static try<T>(fn: () => T): T | undefined {
         try {
