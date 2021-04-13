@@ -10,5 +10,9 @@ export default class Node {
     password: string;
     private readonly methods;
     constructor(client: LavasfyClient, options: NodeOptions);
+    /**
+     * A Method for loading album, playlist, and tracks URLs
+     * @returns Lavalink-like /loadtracks response
+     */
     load(url: string): Promise<LavalinkTrackResponse>;
 }
