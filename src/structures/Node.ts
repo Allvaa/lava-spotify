@@ -25,6 +25,10 @@ export default class Node {
         });
     }
 
+    /**
+     * A Method for loading album, playlist, and tracks URLs
+     * @returns Lavalink-like /loadtracks response
+     */
     public load(url: string): Promise<LavalinkTrackResponse> {
         const [, type, id] = this.client.spotifyPattern.exec(url) ?? [];
         return this.methods[type as keyof Node["methods"]](id);

@@ -5,10 +5,15 @@ import Util from "./Util";
 import { DefaultClientOptions } from "./Constants";
 
 export default class LavasfyClient {
+    /** The provided options */
     public options: Readonly<ClientOptions>;
+    /** The {@link Node}s are stored here */
     public nodes = new Map<string, Node>();
+    /** Spotify API base URL */
     public readonly baseURL!: string;
+    /** A RegExp to validate and parse URLs */
     public readonly spotifyPattern!: RegExp;
+    /** The token to access the Spotify API */
     public readonly token!: string | null;
 
     private nextRequest?: NodeJS.Timeout;
@@ -34,10 +39,12 @@ export default class LavasfyClient {
         this.nodes.set(options.id, new Node(this, options));
     }
 
+    /** Used to validate Spotify URLs */
     public isValidURL(url: string): boolean {
         return this.spotifyPattern.test(url);
     }
 
+    /** A method to retrieve the Spotify API token. (this method must be invoked) */
     public async requestToken(): Promise<void> {
         if (this.nextRequest) return;
 
