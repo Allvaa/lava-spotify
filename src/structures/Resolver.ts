@@ -103,7 +103,7 @@ export default class Resolver {
 
         try {
             const params = new URLSearchParams({
-                identifier: `ytsearch:${track.artists[0].name} - ${track.name} ${this.client.options.audioOnlyResults ? `length=${track.duration_ms}` : ""}`
+                identifier: `ytsearch:${track.artists[0].name} - ${track.name} ${this.client.options.audioOnlyResults ? `length=${(track.duration_ms / 1000).toFixed(0)}` : ""}`
             }).toString();
 
             // @ts-expect-error 2322
