@@ -19,7 +19,7 @@
   "author": "Allvaa",
   "license": "MIT",
   "dependencies": {
-    "node-superfetch": "^0.1.10"
+    "node-superfetch": "^0.2.2"
   },
   "devDependencies": {
     "@types/node": "^14.14.19",
