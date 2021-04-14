@@ -12,4 +12,5 @@ export default class Resolver {
     getTrack(id: string): Promise<LavalinkTrackResponse>;
     private getPlaylistTracks;
     private resolve;
+    private retrieveTrack;
 }
