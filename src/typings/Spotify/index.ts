@@ -23,6 +23,7 @@ export interface SpotifyPlaylist {
 
 export interface SpotifyTrack {
     artists: SpotifyArtist[];
+    duration_ms: number;
     external_urls: {
         spotify: string;
     };
