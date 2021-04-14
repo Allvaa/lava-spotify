@@ -102,17 +102,8 @@ export default class Resolver {
         if (cached) return Util.structuredClone(cached);
 
         try {
-            const params = new URLSearchParams({
-                identifier: `ytsearch:${track.artists[0].name} - ${track.name} ${this.client.options.audioOnlyResults ? `length=${(track.duration_ms / 1000).toFixed(0)}` : ""}`
-            }).toString();
-
-            // @ts-expect-error 2322
-            const { body }: { body: LavalinkTrackResponse } = await request
-                .get(`http://${this.node.host}:${this.node.port}/loadtracks?${params}`)
-                .set("Authorization", this.node.password);
-
-            if (body.tracks.length) {
-                const lavaTrack = body.tracks[0];
+            const lavaTrack = await this.retrieveTrack(track);
+            if (lavaTrack) {
                 if (this.client.options.useSpotifyMetadata) {
                     Object.assign(lavaTrack.info, {
                         title: track.name,
@@ -122,8 +113,24 @@ export default class Resolver {
                 }
                 this.cache.set(track.id, Object.freeze(lavaTrack));
             }
+            return Util.structuredClone(lavaTrack);
+        } catch {
+            return undefined;
+        }
+    }
 
-            return Util.structuredClone(body.tracks[0]);
+    private async retrieveTrack(track: SpotifyTrack): Promise<LavalinkTrack | undefined> {
+        try {
+            const params = new URLSearchParams({
+                identifier: `ytsearch:${track.artists[0].name} - ${track.name} ${this.client.options.audioOnlyResults ? `length=${(track.duration_ms / 1000).toFixed(0)}` : ""}`
+            }).toString();
+
+            // @ts-expect-error 2322
+            const { body: response }: { body: LavalinkTrackResponse } = await request
+                .get(`http://${this.node.host}:${this.node.port}/loadtracks?${params}`)
+                .set("Authorization", this.node.password);
+
+            return response.tracks[0];
         } catch {
             return undefined;
         }
