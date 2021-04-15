@@ -4,7 +4,7 @@ exports.DefaultClientOptions = void 0;
 exports.DefaultClientOptions = {
     clientID: "",
     clientSecret: "",
-    playlistPageLimit: 2,
+    playlistLoadLimit: 2,
     audioOnlyResults: false,
     useSpotifyMetadata: false
 };

@@ -4,10 +4,10 @@ export interface ClientOptions {
     /** Spotify client Secret */
     clientSecret: string;
     /**
-     * Maximum pages of playlist to load
+     * Maximum pages of playlist to load (each page contains 100 tracks)
      * @default 2
      */
-    playlistPageLimit?: number;
+    playlistLoadLimit?: number;
     /**
      * This will filter the search to video that only contains audio of the Spotify track ~~(likely)~~
      * @default false

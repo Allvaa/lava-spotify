@@ -14,10 +14,10 @@ class Resolver {
     get token() {
         return this.client.token;
     }
-    get playlistPageLimit() {
-        return this.client.options.playlistPageLimit === 0
+    get playlistLoadLimit() {
+        return this.client.options.playlistLoadLimit === 0
             ? Infinity
-            : this.client.options.playlistPageLimit;
+            : this.client.options.playlistLoadLimit;
     }
     async getAlbum(id) {
         const album = await Util_1.default.tryPromise(async () => {
@@ -64,7 +64,7 @@ class Resolver {
         };
     }
     async getPlaylistTracks(playlist, currPage = 1) {
-        if (!playlist.tracks.next || currPage >= this.playlistPageLimit)
+        if (!playlist.tracks.next || currPage >= this.playlistLoadLimit)
             return playlist.tracks.items;
         currPage++;
         const { body } = await node_superfetch_1.default
@@ -72,7 +72,7 @@ class Resolver {
             .set("Authorization", this.token);
         const { items, next } = body;
         const mergedPlaylistTracks = playlist.tracks.items.concat(items);
-        if (next && currPage < this.playlistPageLimit)
+        if (next && currPage < this.playlistLoadLimit)
             return this.getPlaylistTracks({
                 tracks: {
                     items: mergedPlaylistTracks,
