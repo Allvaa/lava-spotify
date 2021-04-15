@@ -13,10 +13,10 @@ export default class Resolver {
         return this.client.token!;
     }
 
-    public get playlistPageLimit(): number {
-        return this.client.options.playlistPageLimit === 0
+    public get playlistLoadLimit(): number {
+        return this.client.options.playlistLoadLimit === 0
             ? Infinity
-            : this.client.options.playlistPageLimit!;
+            : this.client.options.playlistLoadLimit!;
     }
 
     public async getAlbum(id: string): Promise<LavalinkTrackResponse> {
@@ -77,7 +77,7 @@ export default class Resolver {
             next: string | null;
         };
     }, currPage = 1): Promise<Array<{ track: SpotifyTrack }>> {
-        if (!playlist.tracks.next || currPage >= this.playlistPageLimit) return playlist.tracks.items;
+        if (!playlist.tracks.next || currPage >= this.playlistLoadLimit) return playlist.tracks.items;
         currPage++;
 
         const { body }: any = await request
@@ -88,7 +88,7 @@ export default class Resolver {
 
         const mergedPlaylistTracks = playlist.tracks.items.concat(items);
 
-        if (next && currPage < this.playlistPageLimit) return this.getPlaylistTracks({
+        if (next && currPage < this.playlistLoadLimit) return this.getPlaylistTracks({
             tracks: {
                 items: mergedPlaylistTracks,
                 next
