@@ -3,11 +3,20 @@ export interface ClientOptions {
     clientID: string;
     /** Spotify client Secret */
     clientSecret: string;
-    /** Maximum pages of playlist to load */
+    /**
+     * Maximum pages of playlist to load
+     * @default 2
+     */
     playlistPageLimit?: number;
-    /** This will filter the results to auto generated videos */
+    /**
+     * This will filter the search to video that only contains audio of the Spotify track ~~(likely)~~
+     * @default false
+     */
     audioOnlyResults?: boolean;
-    /** {@link LavalinkTrack#info#title}, {@link LavalinkTrack#info#author}, {@link LavalinkTrack#info#uri} will be set to spotify's */
+    /**
+     * The original value of title, author, and uri in {@link LavalinkTrack} will be replaced to Spotify's
+     * @default false
+     */
     useSpotifyMetadata?: boolean;
 }
 

@@ -5,13 +5,13 @@ import Util from "./Util";
 import { DefaultClientOptions } from "./Constants";
 
 export default class LavasfyClient {
-    /** The provided options */
+    /** The provided options when the class was instantiated */
     public options: Readonly<ClientOptions>;
     /** The {@link Node}s are stored here */
     public nodes = new Map<string, Node>();
     /** Spotify API base URL */
     public readonly baseURL!: string;
-    /** A RegExp to validate and parse URLs */
+    /** A RegExp that will be used for validate and parse URLs */
     public readonly spotifyPattern!: RegExp;
     /** The token to access the Spotify API */
     public readonly token!: string | null;
@@ -39,7 +39,7 @@ export default class LavasfyClient {
         this.nodes.set(options.id, new Node(this, options));
     }
 
-    /** Used to validate Spotify URLs */
+    /** Determine the URL is a valid Spotify URL or not */
     public isValidURL(url: string): boolean {
         return this.spotifyPattern.test(url);
     }
