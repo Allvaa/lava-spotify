@@ -21,7 +21,7 @@ class Node {
         });
     }
     /**
-     * A Method for loading album, playlist, and tracks URLs
+     * A method for loading Spotify URLs
      * @returns Lavalink-like /loadtracks response
      */
     load(url) {

@@ -11,7 +11,7 @@ export default class Node {
     private readonly methods;
     constructor(client: LavasfyClient, options: NodeOptions);
     /**
-     * A Method for loading album, playlist, and tracks URLs
+     * A method for loading Spotify URLs
      * @returns Lavalink-like /loadtracks response
      */
     load(url: string): Promise<LavalinkTrackResponse>;
