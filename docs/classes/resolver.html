@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Resolver | lavasfy - v2.1.2</title>
-	<meta name="description" content="Documentation for lavasfy - v2.1.2">
+	<title>Resolver | lavasfy - v2.2.0</title>
+	<meta name="description" content="Documentation for lavasfy - v2.2.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 	<script async src="../assets/js/search.js" id="search-script"></script>
@@ -23,7 +23,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">lavasfy - v2.1.2</a>
+					<a href="../index.html" class="title">lavasfy - v2.2.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -52,7 +52,7 @@
 		<div class="container">
 			<ul class="tsd-breadcrumb">
 				<li>
-					<a href="../modules.html">lavasfy - v2.1.2</a>
+					<a href="../modules.html">lavasfy - v2.2.0</a>
 				</li>
 				<li>
 					<a href="resolver.html">Resolver</a>
@@ -94,7 +94,7 @@
 						<section class="tsd-index-section ">
 							<h3>Accessors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="resolver.html#playlistpageloadlimit" class="tsd-kind-icon">playlist<wbr>Page<wbr>Load<wbr>Limit</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="resolver.html#playlistloadlimit" class="tsd-kind-icon">playlist<wbr>Load<wbr>Limit</a></li>
 								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="resolver.html#token" class="tsd-kind-icon">token</a></li>
 							</ul>
 						</section>
@@ -106,6 +106,7 @@
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="resolver.html#getplaylisttracks" class="tsd-kind-icon">get<wbr>Playlist<wbr>Tracks</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="resolver.html#gettrack" class="tsd-kind-icon">get<wbr>Track</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="resolver.html#resolve" class="tsd-kind-icon">resolve</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="resolver.html#retrievetrack" class="tsd-kind-icon">retrieve<wbr>Track</a></li>
 							</ul>
 						</section>
 					</div>
@@ -123,7 +124,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Allvaa/lava-spotify/blob/a9c41bc/src/structures/Resolver.ts#L8">structures/Resolver.ts:8</a></li>
+									<li>Defined in <a href="https://github.com/Allvaa/lava-spotify/blob/ad81802/src/structures/Resolver.ts#L8">structures/Resolver.ts:8</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -145,7 +146,7 @@
 					<div class="tsd-signature tsd-kind-icon">cache<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="../interfaces/lavalinktrack.html" class="tsd-signature-type" data-tsd-kind="Interface">LavalinkTrack</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Allvaa/lava-spotify/blob/a9c41bc/src/structures/Resolver.ts#L8">structures/Resolver.ts:8</a></li>
+							<li>Defined in <a href="https://github.com/Allvaa/lava-spotify/blob/ad81802/src/structures/Resolver.ts#L8">structures/Resolver.ts:8</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -155,7 +156,7 @@
 					<div class="tsd-signature tsd-kind-icon">client<span class="tsd-signature-symbol">:</span> <a href="lavasfyclient.html" class="tsd-signature-type" data-tsd-kind="Class">LavasfyClient</a><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Allvaa/lava-spotify/blob/a9c41bc/src/structures/Resolver.ts#L7">structures/Resolver.ts:7</a></li>
+							<li>Defined in <a href="https://github.com/Allvaa/lava-spotify/blob/ad81802/src/structures/Resolver.ts#L7">structures/Resolver.ts:7</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -170,16 +171,16 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Accessors</h2>
 				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
-					<a name="playlistpageloadlimit" class="tsd-anchor"></a>
-					<h3>playlist<wbr>Page<wbr>Load<wbr>Limit</h3>
+					<a name="playlistloadlimit" class="tsd-anchor"></a>
+					<h3>playlist<wbr>Load<wbr>Limit</h3>
 					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> playlistPageLoadLimit<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> playlistLoadLimit<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Allvaa/lava-spotify/blob/a9c41bc/src/structures/Resolver.ts#L16">structures/Resolver.ts:16</a></li>
+									<li>Defined in <a href="https://github.com/Allvaa/lava-spotify/blob/ad81802/src/structures/Resolver.ts#L16">structures/Resolver.ts:16</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
@@ -196,7 +197,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Allvaa/lava-spotify/blob/a9c41bc/src/structures/Resolver.ts#L12">structures/Resolver.ts:12</a></li>
+									<li>Defined in <a href="https://github.com/Allvaa/lava-spotify/blob/ad81802/src/structures/Resolver.ts#L12">structures/Resolver.ts:12</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
@@ -216,7 +217,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Allvaa/lava-spotify/blob/a9c41bc/src/structures/Resolver.ts#L22">structures/Resolver.ts:22</a></li>
+									<li>Defined in <a href="https://github.com/Allvaa/lava-spotify/blob/ad81802/src/structures/Resolver.ts#L22">structures/Resolver.ts:22</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -239,7 +240,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Allvaa/lava-spotify/blob/a9c41bc/src/structures/Resolver.ts#L40">structures/Resolver.ts:40</a></li>
+									<li>Defined in <a href="https://github.com/Allvaa/lava-spotify/blob/ad81802/src/structures/Resolver.ts#L40">structures/Resolver.ts:40</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -262,7 +263,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Allvaa/lava-spotify/blob/a9c41bc/src/structures/Resolver.ts#L72">structures/Resolver.ts:72</a></li>
+									<li>Defined in <a href="https://github.com/Allvaa/lava-spotify/blob/ad81802/src/structures/Resolver.ts#L74">structures/Resolver.ts:74</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -301,7 +302,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Allvaa/lava-spotify/blob/a9c41bc/src/structures/Resolver.ts#L58">structures/Resolver.ts:58</a></li>
+									<li>Defined in <a href="https://github.com/Allvaa/lava-spotify/blob/ad81802/src/structures/Resolver.ts#L58">structures/Resolver.ts:58</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -324,7 +325,30 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Allvaa/lava-spotify/blob/a9c41bc/src/structures/Resolver.ts#L98">structures/Resolver.ts:98</a></li>
+									<li>Defined in <a href="https://github.com/Allvaa/lava-spotify/blob/ad81802/src/structures/Resolver.ts#L100">structures/Resolver.ts:100</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>track: <a href="../interfaces/spotifytrack.html" class="tsd-signature-type" data-tsd-kind="Interface">SpotifyTrack</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/lavalinktrack.html" class="tsd-signature-type" data-tsd-kind="Interface">LavalinkTrack</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="retrievetrack" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> retrieve<wbr>Track</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">retrieve<wbr>Track<span class="tsd-signature-symbol">(</span>track<span class="tsd-signature-symbol">: </span><a href="../interfaces/spotifytrack.html" class="tsd-signature-type" data-tsd-kind="Interface">SpotifyTrack</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/lavalinktrack.html" class="tsd-signature-type" data-tsd-kind="Interface">LavalinkTrack</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Allvaa/lava-spotify/blob/ad81802/src/structures/Resolver.ts#L122">structures/Resolver.ts:122</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -373,7 +397,7 @@
 								<a href="resolver.html#node" class="tsd-kind-icon">node</a>
 							</li>
 							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
-								<a href="resolver.html#playlistpageloadlimit" class="tsd-kind-icon">playlist<wbr>Page<wbr>Load<wbr>Limit</a>
+								<a href="resolver.html#playlistloadlimit" class="tsd-kind-icon">playlist<wbr>Load<wbr>Limit</a>
 							</li>
 							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
 								<a href="resolver.html#token" class="tsd-kind-icon">token</a>
@@ -392,6 +416,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
 								<a href="resolver.html#resolve" class="tsd-kind-icon">resolve</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="resolver.html#retrievetrack" class="tsd-kind-icon">retrieve<wbr>Track</a>
 							</li>
 						</ul>
 					</li>

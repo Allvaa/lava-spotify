@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Node | lavasfy - v2.1.2</title>
-	<meta name="description" content="Documentation for lavasfy - v2.1.2">
+	<title>Node | lavasfy - v2.2.0</title>
+	<meta name="description" content="Documentation for lavasfy - v2.2.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 	<script async src="../assets/js/search.js" id="search-script"></script>
@@ -23,7 +23,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">lavasfy - v2.1.2</a>
+					<a href="../index.html" class="title">lavasfy - v2.2.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -52,7 +52,7 @@
 		<div class="container">
 			<ul class="tsd-breadcrumb">
 				<li>
-					<a href="../modules.html">lavasfy - v2.1.2</a>
+					<a href="../modules.html">lavasfy - v2.2.0</a>
 				</li>
 				<li>
 					<a href="node.html">Node</a>
@@ -87,8 +87,11 @@
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="node.html#client" class="tsd-kind-icon">client</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="node.html#host" class="tsd-kind-icon">host</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="node.html#id" class="tsd-kind-icon">id</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="node.html#methods" class="tsd-kind-icon">methods</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="node.html#options" class="tsd-kind-icon">options</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="node.html#password" class="tsd-kind-icon">password</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="node.html#port" class="tsd-kind-icon">port</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="node.html#resolver" class="tsd-kind-icon">resolver</a></li>
 							</ul>
 						</section>
@@ -113,7 +116,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Allvaa/lava-spotify/blob/a9c41bc/src/structures/Node.ts#L11">structures/Node.ts:11</a></li>
+									<li>Defined in <a href="https://github.com/Allvaa/lava-spotify/blob/ad81802/src/structures/Node.ts#L17">structures/Node.ts:17</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -139,13 +142,33 @@
 					<aside class="tsd-sources">
 					</aside>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="host" class="tsd-anchor"></a>
+					<h3>host</h3>
+					<div class="tsd-signature tsd-kind-icon">host<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/Allvaa/lava-spotify/blob/ad81802/src/structures/Node.ts#L9">structures/Node.ts:9</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="id" class="tsd-anchor"></a>
+					<h3>id</h3>
+					<div class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/Allvaa/lava-spotify/blob/ad81802/src/structures/Node.ts#L8">structures/Node.ts:8</a></li>
+						</ul>
+					</aside>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
 					<a name="methods" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> methods</h3>
 					<div class="tsd-signature tsd-kind-icon">methods<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>album<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/lavalinktrackresponse.html" class="tsd-signature-type" data-tsd-kind="Interface">LavalinkTrackResponse</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>playlist<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/lavalinktrackresponse.html" class="tsd-signature-type" data-tsd-kind="Interface">LavalinkTrackResponse</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>track<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/lavalinktrackresponse.html" class="tsd-signature-type" data-tsd-kind="Interface">LavalinkTrackResponse</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Allvaa/lava-spotify/blob/a9c41bc/src/structures/Node.ts#L7">structures/Node.ts:7</a></li>
+							<li>Defined in <a href="https://github.com/Allvaa/lava-spotify/blob/ad81802/src/structures/Node.ts#L13">structures/Node.ts:13</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -218,10 +241,23 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="options" class="tsd-anchor"></a>
-					<h3>options</h3>
-					<div class="tsd-signature tsd-kind-icon">options<span class="tsd-signature-symbol">:</span> <a href="../interfaces/nodeoptions.html" class="tsd-signature-type" data-tsd-kind="Interface">NodeOptions</a></div>
+					<a name="password" class="tsd-anchor"></a>
+					<h3>password</h3>
+					<div class="tsd-signature tsd-kind-icon">password<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/Allvaa/lava-spotify/blob/ad81802/src/structures/Node.ts#L11">structures/Node.ts:11</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="port" class="tsd-anchor"></a>
+					<h3>port</h3>
+					<div class="tsd-signature tsd-kind-icon">port<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/Allvaa/lava-spotify/blob/ad81802/src/structures/Node.ts#L10">structures/Node.ts:10</a></li>
+						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
@@ -230,7 +266,7 @@
 					<div class="tsd-signature tsd-kind-icon">resolver<span class="tsd-signature-symbol">:</span> <a href="resolver.html" class="tsd-signature-type" data-tsd-kind="Class">Resolver</a><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Allvaa/lava-spotify/blob/a9c41bc/src/structures/Node.ts#L6">structures/Node.ts:6</a></li>
+							<li>Defined in <a href="https://github.com/Allvaa/lava-spotify/blob/ad81802/src/structures/Node.ts#L6">structures/Node.ts:6</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -247,9 +283,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Allvaa/lava-spotify/blob/a9c41bc/src/structures/Node.ts#L15">structures/Node.ts:15</a></li>
+									<li>Defined in <a href="https://github.com/Allvaa/lava-spotify/blob/ad81802/src/structures/Node.ts#L32">structures/Node.ts:32</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>A method for loading Spotify URLs</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -257,6 +298,7 @@
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/lavalinktrackresponse.html" class="tsd-signature-type" data-tsd-kind="Interface">LavalinkTrackResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>Lavalink-like /loadtracks response</p>
 						</li>
 					</ul>
 				</section>
@@ -286,11 +328,20 @@
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="node.html#client" class="tsd-kind-icon">client</a>
 							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="node.html#host" class="tsd-kind-icon">host</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="node.html#id" class="tsd-kind-icon">id</a>
+							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="node.html#methods" class="tsd-kind-icon">methods</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="node.html#options" class="tsd-kind-icon">options</a>
+								<a href="node.html#password" class="tsd-kind-icon">password</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="node.html#port" class="tsd-kind-icon">port</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="node.html#resolver" class="tsd-kind-icon">resolver</a>

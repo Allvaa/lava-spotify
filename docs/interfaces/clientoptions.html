@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ClientOptions | lavasfy - v2.1.2</title>
-	<meta name="description" content="Documentation for lavasfy - v2.1.2">
+	<title>ClientOptions | lavasfy - v2.2.0</title>
+	<meta name="description" content="Documentation for lavasfy - v2.2.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 	<script async src="../assets/js/search.js" id="search-script"></script>
@@ -23,7 +23,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">lavasfy - v2.1.2</a>
+					<a href="../index.html" class="title">lavasfy - v2.2.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -52,7 +52,7 @@
 		<div class="container">
 			<ul class="tsd-breadcrumb">
 				<li>
-					<a href="../modules.html">lavasfy - v2.1.2</a>
+					<a href="../modules.html">lavasfy - v2.2.0</a>
 				</li>
 				<li>
 					<a href="clientoptions.html">ClientOptions</a>
@@ -80,10 +80,11 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="clientoptions.html#audioonlyresults" class="tsd-kind-icon">audio<wbr>Only<wbr>Results</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="clientoptions.html#clientid" class="tsd-kind-icon">clientID</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="clientoptions.html#clientsecret" class="tsd-kind-icon">client<wbr>Secret</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="clientoptions.html#filteraudioonlyresult" class="tsd-kind-icon">filter<wbr>Audio<wbr>Only<wbr>Result</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="clientoptions.html#playlistpageloadlimit" class="tsd-kind-icon">playlist<wbr>Page<wbr>Load<wbr>Limit</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="clientoptions.html#playlistloadlimit" class="tsd-kind-icon">playlist<wbr>Load<wbr>Limit</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="clientoptions.html#usespotifymetadata" class="tsd-kind-icon">use<wbr>Spotify<wbr>Metadata</a></li>
 							</ul>
 						</section>
 					</div>
@@ -92,14 +93,39 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="audioonlyresults" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> audio<wbr>Only<wbr>Results</h3>
+					<div class="tsd-signature tsd-kind-icon">audio<wbr>Only<wbr>Results<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/Allvaa/lava-spotify/blob/ad81802/src/typings/index.ts#L15">typings/index.ts:15</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>This will filter the search to video that only contains audio of the Spotify track (likely)</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>false</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="clientid" class="tsd-anchor"></a>
 					<h3>clientID</h3>
 					<div class="tsd-signature tsd-kind-icon">clientID<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Allvaa/lava-spotify/blob/a9c41bc/src/typings/index.ts#L2">typings/index.ts:2</a></li>
+							<li>Defined in <a href="https://github.com/Allvaa/lava-spotify/blob/ad81802/src/typings/index.ts#L3">typings/index.ts:3</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Spotify client ID</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="clientsecret" class="tsd-anchor"></a>
@@ -107,29 +133,54 @@
 					<div class="tsd-signature tsd-kind-icon">client<wbr>Secret<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Allvaa/lava-spotify/blob/a9c41bc/src/typings/index.ts#L3">typings/index.ts:3</a></li>
+							<li>Defined in <a href="https://github.com/Allvaa/lava-spotify/blob/ad81802/src/typings/index.ts#L5">typings/index.ts:5</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Spotify client Secret</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="filteraudioonlyresult" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> filter<wbr>Audio<wbr>Only<wbr>Result</h3>
-					<div class="tsd-signature tsd-kind-icon">filter<wbr>Audio<wbr>Only<wbr>Result<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">boolean</span></div>
+					<a name="playlistloadlimit" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> playlist<wbr>Load<wbr>Limit</h3>
+					<div class="tsd-signature tsd-kind-icon">playlist<wbr>Load<wbr>Limit<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Allvaa/lava-spotify/blob/a9c41bc/src/typings/index.ts#L5">typings/index.ts:5</a></li>
+							<li>Defined in <a href="https://github.com/Allvaa/lava-spotify/blob/ad81802/src/typings/index.ts#L10">typings/index.ts:10</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Maximum pages of playlist to load (each page contains 100 tracks)</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>2</p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="playlistpageloadlimit" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> playlist<wbr>Page<wbr>Load<wbr>Limit</h3>
-					<div class="tsd-signature tsd-kind-icon">playlist<wbr>Page<wbr>Load<wbr>Limit<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
+					<a name="usespotifymetadata" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> use<wbr>Spotify<wbr>Metadata</h3>
+					<div class="tsd-signature tsd-kind-icon">use<wbr>Spotify<wbr>Metadata<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Allvaa/lava-spotify/blob/a9c41bc/src/typings/index.ts#L4">typings/index.ts:4</a></li>
+							<li>Defined in <a href="https://github.com/Allvaa/lava-spotify/blob/ad81802/src/typings/index.ts#L20">typings/index.ts:20</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The original value of title, author, and uri in <a href="lavalinktrack.html">LavalinkTrack</a> will be replaced to Spotify&#39;s</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>false</p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 			</section>
 		</div>
@@ -158,16 +209,19 @@
 						<a href="clientoptions.html" class="tsd-kind-icon">Client<wbr>Options</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="clientoptions.html#audioonlyresults" class="tsd-kind-icon">audio<wbr>Only<wbr>Results</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="clientoptions.html#clientid" class="tsd-kind-icon">clientID</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="clientoptions.html#clientsecret" class="tsd-kind-icon">client<wbr>Secret</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="clientoptions.html#filteraudioonlyresult" class="tsd-kind-icon">filter<wbr>Audio<wbr>Only<wbr>Result</a>
+								<a href="clientoptions.html#playlistloadlimit" class="tsd-kind-icon">playlist<wbr>Load<wbr>Limit</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="clientoptions.html#playlistpageloadlimit" class="tsd-kind-icon">playlist<wbr>Page<wbr>Load<wbr>Limit</a>
+								<a href="clientoptions.html#usespotifymetadata" class="tsd-kind-icon">use<wbr>Spotify<wbr>Metadata</a>
 							</li>
 						</ul>
 					</li>
