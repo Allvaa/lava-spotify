@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.2.0](https://github.com/Allvaa/lava-spotify/compare/v2.1.1...v2.2.0) (2021-04-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* Renamed some ClientOptions properties<br>
+`filterAudioOnlyResult` -> `audioOnlyResults`<br>
+`playlistPageLoadLimit` -> `playlistLoadLimit`
+* `Node#options` has been removed, all its properties are now merged in the `Node` class
+
+### Features
+
+* Spotify metadata for LavalinkTrack#info ([#8](https://github.com/Allvaa/lava-spotify/issues/8)) ([da26123](https://github.com/Allvaa/lava-spotify/commit/da26123f832ab3a44a56a08a6f2d12fb6cbe5b26))
+
+
+### Bug Fixes
+
+* **Resolver:** loading some tracks when `audioOnlyResults` enabled returns no matches ([47997fb](https://github.com/Allvaa/lava-spotify/commit/47997fbe2fdcca2ca4e44d2437e39e3791765c6f))
+* **Resolver#getTrack:** when no results it's supposed to be an empty array not undefined value in array ([9629d5f](https://github.com/Allvaa/lava-spotify/commit/9629d5f900fb482eb4165c19f4e844b6bf2dd3b9))
+
 ### [2.1.2](https://github.com/Allvaa/lava-spotify/compare/v2.1.1...v2.1.2) (2021-02-03)
 
 
