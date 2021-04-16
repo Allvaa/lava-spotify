@@ -9,7 +9,7 @@ export interface ClientOptions {
      */
     playlistLoadLimit?: number;
     /**
-     * This will filter the search to video that only contains audio of the Spotify track ~~(likely)~~
+     * This will filter the search to video that only contains audio of the Spotify track (likely)
      * @default false
      */
     audioOnlyResults?: boolean;
