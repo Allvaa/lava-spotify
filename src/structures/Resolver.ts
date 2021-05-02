@@ -51,7 +51,7 @@ export default class Resolver {
             playlistInfo: {
                 name: playlist?.name
             },
-            tracks: (await Promise.all(playlistTracks.map(x => this.resolve(x.track)))).filter(Boolean) as LavalinkTrack[]
+            tracks: (await Promise.all(playlistTracks.map(x => x.track && this.resolve(x.track)))).filter(Boolean) as LavalinkTrack[]
         };
     }
 
