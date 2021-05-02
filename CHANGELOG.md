@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.2.1](https://github.com/Allvaa/lava-spotify/compare/v2.2.0...v2.2.1) (2021-05-02)
+
+
+### Bug Fixes
+
+* only load valid playlist tracks ([#10](https://github.com/Allvaa/lava-spotify/issues/10)) ([6dbfed9](https://github.com/Allvaa/lava-spotify/commit/6dbfed97d20219d2e7f29611d459a223457cd253))
+
 ## [2.2.0](https://github.com/Allvaa/lava-spotify/compare/v2.1.1...v2.2.0) (2021-04-16)
 
 
