@@ -40,12 +40,12 @@ export default class LavasfyClient {
     }
 
     public getNode(query?: String): Node {
-        if(!this.nodes.size) throw new TypeError('No nodes available, please add a node first...');
+        if(!this.nodes.size) throw new TypeError("No nodes available, please add a node first...");
         
         let node =  this.nodes.get(query);
-        if(!node) throw new TypeError('No nodes found with that name');
+        if(!node) throw new TypeError("No nodes found with that name");
         
-        if(!query) return this.nodes.get([...this.nodes.values()][Math.floor(Math.random() * this.nodes.size)].name)'
+        if(!query) return this.nodes.get([...this.nodes.values()][Math.floor(Math.random() * this.nodes.size)].name);
     }
 
     /** Determine the URL is a valid Spotify URL or not */
