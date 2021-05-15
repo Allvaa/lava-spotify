@@ -4,10 +4,11 @@ import Resolver from "./Resolver";
 export default class Node {
     client: LavasfyClient;
     resolver: Resolver;
-    id: string;
+    name: string;
     host: string;
     port: number | string;
-    password: string;
+    auth: string;
+    secure: boolean;
     private readonly methods;
     constructor(client: LavasfyClient, options: NodeOptions);
     /**
