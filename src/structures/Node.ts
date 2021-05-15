@@ -5,10 +5,11 @@ import Resolver from "./Resolver";
 export default class Node {
     public resolver = new Resolver(this);
 
-    public id!: string;
+    public name!: string;
     public host!: string;
     public port!: number | string;
-    public password!: string;
+    public auth!: string;
+    public secure: boolean;
 
     private readonly methods = {
         album: this.resolver.getAlbum.bind(this.resolver),
@@ -18,10 +19,11 @@ export default class Node {
 
     public constructor(public client: LavasfyClient, options: NodeOptions) {
         Object.defineProperties(this, {
-            id: { value: options.id, enumerable: true },
+            name: { value: options.name, enumerable: true },
             host: { value: options.host },
             port: { value: options.port },
-            password: { value: options.password }
+            auth: { value: options.auth },
+            secure: { value: options.value },
         });
     }
 
