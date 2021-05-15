@@ -9,7 +9,7 @@ export default class Node {
     public host!: string;
     public port!: number | string;
     public auth!: string;
-    public secure: boolean;
+    public secure!: boolean;
 
     private readonly methods = {
         album: this.resolver.getAlbum.bind(this.resolver),
@@ -23,7 +23,7 @@ export default class Node {
             host: { value: options.host },
             port: { value: options.port },
             auth: { value: options.auth },
-            secure: { value: options.value }
+            secure: { value: options.secure }
         });
     }
 
