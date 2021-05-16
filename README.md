@@ -19,10 +19,10 @@ const lavasfy = new LavasfyClient({
     clientSecret: "a client secret"
 }, [
     {
-        name: "main",
+        id: "main",
         host: "localhost",
         port: 2333,
-        auth: "youshallnotpass",
+        password: "youshallnotpass",
         secure: false
     }
 ]);
@@ -32,7 +32,7 @@ const lavasfy = new LavasfyClient({
     await lavasfy.requestToken();
 
     // Select node to use with its id.
-    const node = lavasfy.getNode("main");
+    const node = lavasfy.getNode();
 
     // Use Node#load to load album, playlist, and track
     const album = await node.load("https://open.spotify.com/album/4sZni6V6NvVYhfUFGqKuR3");
