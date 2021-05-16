@@ -36,7 +36,7 @@ export default class LavasfyClient {
     }
 
     public addNode(options: NodeOptions): void {
-        this.nodes.set(options.name, new Node(this, options));
+        this.nodes.set(options.id, new Node(this, options));
     }
 
     public removeNode(query: string): boolean {
@@ -50,7 +50,7 @@ export default class LavasfyClient {
     public getNode(query?: string): Node | undefined {
         if (!this.nodes.size) throw new TypeError("No nodes available, please add a node first...");
 
-        if (!query) return this.nodes.get([...this.nodes?.values()][0].name);
+        if (!query) return this.nodes.get([...this.nodes?.values()][0].id);
         
         if (query && this.nodes.has(query)) return this.nodes.get(query);
     }
