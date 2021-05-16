@@ -19,10 +19,10 @@ export default class Node {
 
     public constructor(public client: LavasfyClient, options: NodeOptions) {
         Object.defineProperties(this, {
-            name: { value: options.id, enumerable: true },
+            id: { value: options.id, enumerable: true },
             host: { value: options.host },
             port: { value: options.port },
-            auth: { value: options.password },
+            password: { value: options.password },
             secure: { value: options.secure }
         });
     }
