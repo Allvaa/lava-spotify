@@ -52,7 +52,7 @@ export default class LavasfyClient {
 
         if (!query) return this.nodes.get([...this.nodes?.values()][0].name);
         
-        if (query && this.nodes.has(query!)) return this.nodes.get(query);
+        if (query && this.nodes.has(query)) return this.nodes.get(query);
     }
 
     /** Determine the URL is a valid Spotify URL or not */
