@@ -39,19 +39,24 @@ export default class LavasfyClient {
         this.nodes.set(options.id, new Node(this, options));
     }
 
-    public removeNode(query: string): boolean {
+    public removeNode(id: string): boolean {
         if (!this.nodes.size) throw new Error("No nodes available, please add a node first...");
-        if (!query) throw new Error("Provide a valid node identifier to delete it");
+        if (!id) throw new Error("Provide a valid node identifier to delete it");
 
-        return this.nodes.delete(query);
+        return this.nodes.delete(id);
     }
 
-    public getNode(query?: string): Node | undefined {
+    /**
+     * @param {string} [id] The node id, if not specified it will return a random node. 
+     */
+    public getNode(): Node;
+    public getNode(id: string): Node | undefined
+    public getNode(id?: string): Node | undefined {
         if (!this.nodes.size) throw new Error("No nodes available, please add a node first...");
 
-        if (!query) return [...this.nodes.values()].sort(() => 0.5 - Math.random())[0];
+        if (!id) return [...this.nodes.values()].sort(() => 0.5 - Math.random())[0];
         
-        return this.nodes.get(query);
+        return this.nodes.get(id);
     }
 
     /** Determine the URL is a valid Spotify URL or not */

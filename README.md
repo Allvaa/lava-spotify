@@ -32,7 +32,7 @@ const lavasfy = new LavasfyClient({
     await lavasfy.requestToken();
 
     // Select node to use with its id.
-    const node = lavasfy.getNode();
+    const node = lavasfy.getNode("main");
 
     // Use Node#load to load album, playlist, and track
     const album = await node.load("https://open.spotify.com/album/4sZni6V6NvVYhfUFGqKuR3");
