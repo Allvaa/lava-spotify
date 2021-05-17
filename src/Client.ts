@@ -2,7 +2,7 @@ import { ClientOptions, NodeOptions } from "./typings";
 import request from "node-superfetch";
 import Node from "./structures/Node";
 import Util from "./Util";
-import { DefaultClientOptions } from "./Constants";
+import { DefaultClientOptions, DefaultNodeOptions } from "./Constants";
 
 export default class LavasfyClient {
     /** The provided options when the class was instantiated */
@@ -36,7 +36,27 @@ export default class LavasfyClient {
     }
 
     public addNode(options: NodeOptions): void {
-        this.nodes.set(options.id, new Node(this, options));
+        this.nodes.set(options.id, new Node(this, Util.mergeDefault(DefaultNodeOptions, options)));
+    }
+
+    public removeNode(id: string): boolean {
+        if (!this.nodes.size) throw new Error("No nodes available, please add a node first...");
+        if (!id) throw new Error("Provide a valid node identifier to delete it");
+
+        return this.nodes.delete(id);
+    }
+
+    /**
+     * @param {string} [id] The node id, if not specified it will return a random node. 
+     */
+    public getNode(): Node;
+    public getNode(id: string): Node | undefined
+    public getNode(id?: string): Node | undefined {
+        if (!this.nodes.size) throw new Error("No nodes available, please add a node first...");
+
+        if (!id) return [...this.nodes.values()].sort(() => 0.5 - Math.random())[0];
+        
+        return this.nodes.get(id);
     }
 
     /** Determine the URL is a valid Spotify URL or not */

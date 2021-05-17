@@ -3,6 +3,7 @@ export interface NodeOptions {
     host: string;
     port: number | string;
     password: string;
+    secure?: boolean;
 }
 export interface LavalinkTrack {
     track: string;

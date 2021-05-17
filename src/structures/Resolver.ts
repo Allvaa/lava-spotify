@@ -126,7 +126,7 @@ export default class Resolver {
             });
             // @ts-expect-error 2322
             const { body: response }: { body: LavalinkTrackResponse } = await request
-                .get(`http://${this.node.host}:${this.node.port}/loadtracks?${params.toString()}`)
+                .get(`http${this.node.secure ? "s" : ""}://${this.node.host}:${this.node.port}/loadtracks?${params.toString()}`)
                 .set("Authorization", this.node.password);
             return response.tracks[0];
         } catch {
