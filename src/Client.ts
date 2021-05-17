@@ -50,7 +50,7 @@ export default class LavasfyClient {
     public getNode(query?: string): Node | undefined {
         if (!this.nodes.size) throw new TypeError("No nodes available, please add a node first...");
 
-        if (!query) return this.nodes.get([...this.nodes?.values()][0].id);
+        if (!query) return [...this.nodes.values()].sort(() => 0.5 - Math.random())[0];
         
         if (query && this.nodes.has(query)) return this.nodes.get(query);
     }
