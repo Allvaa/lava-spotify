@@ -2,7 +2,7 @@ import { ClientOptions, NodeOptions } from "./typings";
 import request from "node-superfetch";
 import Node from "./structures/Node";
 import Util from "./Util";
-import { DefaultClientOptions } from "./Constants";
+import { DefaultClientOptions, DefaultNodeOptions } from "./Constants";
 
 export default class LavasfyClient {
     /** The provided options when the class was instantiated */
@@ -36,7 +36,7 @@ export default class LavasfyClient {
     }
 
     public addNode(options: NodeOptions): void {
-        this.nodes.set(options.id, new Node(this, options));
+        this.nodes.set(options.id, new Node(this, Util.mergeDefault(DefaultNodeOptions, options)));
     }
 
     public removeNode(id: string): boolean {
