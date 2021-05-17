@@ -14,8 +14,12 @@ export default class LavasfyClient {
     private nextRequest?;
     constructor(options: ClientOptions, nodesOpt: NodeOptions[]);
     addNode(options: NodeOptions): void;
-    removeNode(query: string): boolean;
-    getNode(query?: string): Node | undefined;
+    removeNode(id: string): boolean;
+    /**
+     * @param {string} [id] The node id, if not specified it will return a random node.
+     */
+    getNode(): Node;
+    getNode(id: string): Node | undefined;
     /** Determine the URL is a valid Spotify URL or not */
     isValidURL(url: string): boolean;
     /** A method to retrieve the Spotify API token. (this method must be invoked) */
