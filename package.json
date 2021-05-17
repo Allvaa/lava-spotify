@@ -1,6 +1,6 @@
 {
   "name": "lavasfy",
-  "version": "2.3.6",
+  "version": "2.2.1",
   "description": "Spotify album, playlist, and track resolver for Lavalink.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
