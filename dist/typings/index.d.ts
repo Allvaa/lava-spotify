@@ -18,6 +18,14 @@ export interface ClientOptions {
      * @default false
      */
     useSpotifyMetadata?: boolean;
+    autoResolve?: boolean;
+}
+export interface UnresolvedTrack {
+    track?: string;
+    info: {
+        title: string;
+        author: string;
+    };
 }
 export * from "./Lavalink";
 export * from "./Spotify";

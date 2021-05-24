@@ -7,6 +7,7 @@ export default class Resolver {
     constructor(node: Node);
     get token(): string;
     get playlistLoadLimit(): number;
+    get autoResolve(): boolean;
     getAlbum(id: string): Promise<LavalinkTrackResponse>;
     getPlaylist(id: string): Promise<LavalinkTrackResponse>;
     getTrack(id: string): Promise<LavalinkTrackResponse>;
