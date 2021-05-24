@@ -19,6 +19,10 @@ export default class Resolver {
             : this.client.options.playlistLoadLimit!;
     }
 
+    public get autoResolve(): boolean {
+        return this.client.options.autoResolve!;
+    }
+
     public async getAlbum(id: string): Promise<LavalinkTrackResponse> {
         const album = await Util.tryPromise(async () => {
             return (await request
@@ -26,14 +30,14 @@ export default class Resolver {
                 .set("Authorization", this.token)).body as SpotifyAlbum;
         });
 
+        const albumTracks = album?.tracks.items ?? [];
+
         return {
             loadType: album ? "PLAYLIST_LOADED" : "NO_MATCHES",
             playlistInfo: {
                 name: album?.name
             },
-            tracks: album
-                ? (await Promise.all(album.tracks.items.map(x => this.resolve(x)))).filter(Boolean) as LavalinkTrack[]
-                : []
+            tracks: this.autoResolve ? (await Promise.all(albumTracks.map(x => this.resolve(x)))).filter(Boolean) as LavalinkTrack[] : albumTracks.map((track) => ({ info: { title: track.name, author: track.artists.join(", "), uri: track.external_urls.spotify } }))
         };
     }
 
@@ -51,7 +55,7 @@ export default class Resolver {
             playlistInfo: {
                 name: playlist?.name
             },
-            tracks: (await Promise.all(playlistTracks.map(x => x.track && this.resolve(x.track)))).filter(Boolean) as LavalinkTrack[]
+            tracks: this.autoResolve ? (await Promise.all(playlistTracks.map(x => x.track && this.resolve(x.track)))).filter(Boolean) as LavalinkTrack[] : playlistTracks.map(({ track }) => ({ info: { title: track.name, author: track.artists.join(", "), uri: track.external_urls.spotify } }))
         };
     }
 
@@ -67,7 +71,7 @@ export default class Resolver {
         return {
             loadType: lavaTrack ? "TRACK_LOADED" : "NO_MATCHES",
             playlistInfo: {},
-            tracks: lavaTrack ? [lavaTrack] : []
+            tracks: this.autoResolve ? lavaTrack ? [lavaTrack] : [] : [{ info: { title: track!.name, author: track!.artists.join(", "), uri: track?.external_urls.spotify } }]
         };
     }
 
@@ -125,7 +129,7 @@ export default class Resolver {
                 identifier: `ytsearch:${track.artists.map(x => x.name).join(", ")} - ${track.name} ${this.client.options.audioOnlyResults ? "Audio" : ""}`
             });
             // @ts-expect-error 2322
-            const { body: response }: { body: LavalinkTrackResponse } = await request
+            const { body: response }: { body: LavalinkTrackResponse<LavalinkTrack> } = await request
                 .get(`http${this.node.secure ? "s" : ""}://${this.node.host}:${this.node.port}/loadtracks?${params.toString()}`)
                 .set("Authorization", this.node.password);
             return response.tracks[0];
