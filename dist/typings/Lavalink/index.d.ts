@@ -6,7 +6,7 @@ export interface NodeOptions {
     password: string;
     secure?: boolean;
 }
-export interface LavalinkTrack extends UnresolvedTrack {
+export interface LavalinkTrack {
     track: string;
     info: {
         identifier: string;
