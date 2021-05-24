@@ -8,7 +8,7 @@ export interface NodeOptions {
     secure?: boolean;
 }
 
-export interface LavalinkTrack extends UnresolvedTrack {
+export interface LavalinkTrack {
     track: string;
     info: {
         identifier: string;
