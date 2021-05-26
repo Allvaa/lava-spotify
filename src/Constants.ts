@@ -5,7 +5,8 @@ export const DefaultClientOptions: ClientOptions = {
     clientSecret: "",
     playlistLoadLimit: 2,
     audioOnlyResults: false,
-    useSpotifyMetadata: false
+    useSpotifyMetadata: false,
+    autoResolve: false
 };
 
 export const DefaultNodeOptions: NodeOptions = {
