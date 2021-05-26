@@ -14,4 +14,5 @@ export default class Resolver {
     private getPlaylistTracks;
     private resolve;
     private retrieveTrack;
+    private buildUnresolved;
 }

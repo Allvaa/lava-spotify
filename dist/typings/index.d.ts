@@ -1,3 +1,4 @@
+import { LavalinkTrack } from "./Lavalink";
 export interface ClientOptions {
     /** Spotify client ID */
     clientID: string;
@@ -23,9 +24,13 @@ export interface ClientOptions {
 export interface UnresolvedTrack {
     track?: string;
     info: {
+        identifier: string;
         title: string;
         author: string;
+        length: number;
+        uri: string;
     };
+    resolve: () => Promise<LavalinkTrack | undefined>;
 }
 export * from "./Lavalink";
 export * from "./Spotify";
