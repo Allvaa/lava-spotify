@@ -139,7 +139,8 @@ export default class Resolver {
     }
 
     private buildUnresolved(spotifyTrack: SpotifyTrack): UnresolvedTrack {
-        const unresolved: UnresolvedTrack = {
+        const _this = this; // eslint-disable-line
+        return {
             info: {
                 identifier: spotifyTrack.id,
                 title: spotifyTrack.name,
@@ -147,9 +148,9 @@ export default class Resolver {
                 uri: spotifyTrack.external_urls.spotify,
                 length: spotifyTrack.duration_ms
             },
-            resolve: () => Promise.resolve(undefined)
+            resolve(): Promise<LavalinkTrack | undefined> {
+                return _this.resolve(this); 
+            }
         };
-
-        return { ...unresolved, resolve: (): Promise<LavalinkTrack | undefined> => this.resolve(unresolved) };
     }
 }
