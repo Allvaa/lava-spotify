@@ -22,7 +22,7 @@ export interface ClientOptions {
     /**
      * Auto resolve the Spotify track to Lavalink track
      *
-     * It's not recommended to enable this option, enabling it will take a while for large playlists to load.
+     * It's not recommended to enable this option, enabling it will spam HTTP requests to YouTube and take a while for large playlists to load.
      * @default false
      */
     autoResolve?: boolean;
