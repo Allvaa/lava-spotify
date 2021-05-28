@@ -1,3 +1,4 @@
+import { UnresolvedTrack } from "..";
 export interface NodeOptions {
     id: string;
     host: string;
@@ -18,13 +19,13 @@ export interface LavalinkTrack {
         uri: string;
     };
 }
-export interface LavalinkTrackResponse {
+export interface LavalinkTrackResponse<T = UnresolvedTrack | LavalinkTrack> {
     loadType: "TRACK_LOADED" | "PLAYLIST_LOADED" | "SEARCH_RESULT" | "NO_MATCHES" | "LOAD_FAILED";
     playlistInfo: {
         name?: string;
         selectedTrack?: number;
     };
-    tracks: LavalinkTrack[];
+    tracks: T[];
     exception?: {
         message: string;
         severity: string;

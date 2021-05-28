@@ -1,3 +1,4 @@
+import { LavalinkTrack } from "./Lavalink";
 export interface ClientOptions {
     /** Spotify client ID */
     clientID: string;
@@ -18,6 +19,24 @@ export interface ClientOptions {
      * @default false
      */
     useSpotifyMetadata?: boolean;
+    /**
+     * Auto resolve the Spotify track to Lavalink track
+     *
+     * It's not recommended to enable this option, enabling it will spam HTTP requests to YouTube and take a while for large playlists to load.
+     * @default false
+     */
+    autoResolve?: boolean;
+}
+export interface UnresolvedTrack {
+    track?: string;
+    info: {
+        identifier: string;
+        title: string;
+        author: string;
+        length: number;
+        uri: string;
+    };
+    resolve: () => Promise<LavalinkTrack | undefined>;
 }
 export * from "./Lavalink";
 export * from "./Spotify";
