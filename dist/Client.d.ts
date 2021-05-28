@@ -22,6 +22,6 @@ export default class LavasfyClient {
     getNode(id: string): Node | undefined;
     /** Determine the URL is a valid Spotify URL or not */
     isValidURL(url: string): boolean;
-    /** A method to retrieve the Spotify API token. (this method must be invoked) */
+    /** A method to retrieve the Spotify API token. (this method only needs to be invoked once after the {@link LavasfyClient} instantiated) */
     requestToken(): Promise<void>;
 }

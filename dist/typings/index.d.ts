@@ -28,7 +28,6 @@ export interface ClientOptions {
     autoResolve?: boolean;
 }
 export interface UnresolvedTrack {
-    track?: string;
     info: {
         identifier: string;
         title: string;
