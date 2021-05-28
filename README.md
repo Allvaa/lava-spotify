@@ -28,7 +28,7 @@ const lavasfy = new LavasfyClient({
 ]);
 
 (async () => {
-    // We need to call this to get the Spotify API access token.
+    // We need to call this to get the Spotify API access token (only needs once after the LavasfyClient instantiated).
     await lavasfy.requestToken();
 
     // Select node to use with its id.

@@ -64,7 +64,7 @@ export default class LavasfyClient {
         return this.spotifyPattern.test(url);
     }
 
-    /** A method to retrieve the Spotify API token. (this method must be invoked) */
+    /** A method to retrieve the Spotify API token. (this method only needs to be invoked once after the {@link LavasfyClient} instantiated) */
     public async requestToken(): Promise<void> {
         if (this.nextRequest) return;
 
