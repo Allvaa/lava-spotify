@@ -15,4 +15,5 @@ export default class Resolver {
     private resolve;
     private retrieveTrack;
     private buildUnresolved;
+    private buildResponse;
 }
