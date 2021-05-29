@@ -14,9 +14,7 @@ export default class Resolver {
     }
 
     public get playlistLoadLimit(): number {
-        return this.client.options.playlistLoadLimit === 0
-            ? Infinity
-            : this.client.options.playlistLoadLimit!;
+        return this.client.options.playlistLoadLimit!;
     }
 
     public get autoResolve(): boolean {
@@ -51,7 +49,9 @@ export default class Resolver {
                 .get(`${this.client.baseURL}/playlists/${id}`)
                 .set("Authorization", this.token);
 
-            const unresolvedPlaylistTracks = (await this.getPlaylistTracks(spotifyPlaylist)).map(x => this.buildUnresolved(x.track));
+            await this.getPlaylistTracks(spotifyPlaylist);
+
+            const unresolvedPlaylistTracks = spotifyPlaylist.tracks.items.map(x => this.buildUnresolved(x.track));
 
             return this.buildResponse(
                 "PLAYLIST_LOADED",
@@ -82,30 +82,20 @@ export default class Resolver {
         }
     }
 
-    private async getPlaylistTracks(playlist: {
-        tracks: {
-            items: Array<{ track: SpotifyTrack }>;
-            next: string | null;
-        };
-    }, currPage = 1): Promise<Array<{ track: SpotifyTrack }>> {
-        if (!playlist.tracks.next || currPage >= this.playlistLoadLimit) return playlist.tracks.items;
-        currPage++;
+    private async getPlaylistTracks(spotifyPlaylist: SpotifyPlaylist): Promise<void> {
+        let nextPage = spotifyPlaylist.tracks.next;
+        let pageLoaded = 1;
+        while (nextPage && (this.playlistLoadLimit === 0 ? true : pageLoaded < this.playlistLoadLimit)) {
+            // @ts-expect-error 2322
+            const { body: spotifyPlaylistPage }: { body: SpotifyPlaylist["tracks"] } = await request
+                .get(nextPage)
+                .set("Authorization", this.token);
 
-        const { body }: any = await request
-            .get(playlist.tracks.next)
-            .set("Authorization", this.token);
+            spotifyPlaylist.tracks.items.push(...spotifyPlaylistPage.items);
 
-        const { items, next }: { items: Array<{ track: SpotifyTrack }>; next: string | null } = body;
-
-        const mergedPlaylistTracks = playlist.tracks.items.concat(items);
-
-        if (next && currPage < this.playlistLoadLimit) return this.getPlaylistTracks({
-            tracks: {
-                items: mergedPlaylistTracks,
-                next
-            }
-        }, currPage);
-        else return mergedPlaylistTracks;
+            nextPage = spotifyPlaylistPage.next;
+            pageLoaded++;
+        }
     }
 
     private async resolve(unresolvedTrack: UnresolvedTrack): Promise<LavalinkTrack | undefined> {
