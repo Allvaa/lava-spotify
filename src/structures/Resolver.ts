@@ -133,7 +133,7 @@ export default class Resolver {
             info: {
                 identifier: spotifyTrack.id,
                 title: spotifyTrack.name,
-                author: spotifyTrack.artists.join(", "),
+                author: spotifyTrack.artists.map(x => x.name).join(", "),
                 uri: spotifyTrack.external_urls.spotify,
                 length: spotifyTrack.duration_ms
             },
