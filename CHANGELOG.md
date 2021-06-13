@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.3.0](https://github.com/Allvaa/lava-spotify/compare/v2.2.1...v2.3.0) (2021-06-13)
+
+### ⚠ BREAKING CHANGES
+
+* If the `autoResolve` option disabled `Node#load` will returns a `LavalinkTrackResponse` with `UnresolvedTrack` tracks instead of `LavalinkTrack`, and you will need to resolve it by invoking `UnresolvedTrack#resolve`
+
+### Features
+
+* Added HTTPs support, getNode method, removeNode method ([#13](https://github.com/Allvaa/lava-spotify/issues/13)) ([c5f0bc4](https://github.com/Allvaa/lava-spotify/commit/c5f0bc4a09b1b407c2ac272f1d05f1a5f16438d1))
+* autoResolve option ([#14](https://github.com/Allvaa/lava-spotify/issues/14)) ([5038bbc](https://github.com/Allvaa/lava-spotify/commit/5038bbca1a8aa73e6a7e41532180f2dc0b6c0c08))
+
+
 ### [2.2.1](https://github.com/Allvaa/lava-spotify/compare/v2.2.0...v2.2.1) (2021-05-02)
 
 
