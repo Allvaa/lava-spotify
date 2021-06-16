@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>lavasfy - v2.2.1</title>
-	<meta name="description" content="Documentation for lavasfy - v2.2.1">
+	<title>lavasfy - v2.3.0</title>
+	<meta name="description" content="Documentation for lavasfy - v2.3.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
 	<script async src="assets/js/search.js" id="search-script"></script>
@@ -23,7 +23,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="index.html" class="title">lavasfy - v2.2.1</a>
+					<a href="index.html" class="title">lavasfy - v2.3.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -50,7 +50,7 @@
 	</div>
 	<div class="tsd-page-title">
 		<div class="container">
-			<h1>lavasfy - v2.2.1</h1>
+			<h1>lavasfy - v2.3.0</h1>
 		</div>
 	</div>
 </header>
@@ -84,16 +84,17 @@
 <span style="color: #000000">        </span><span style="color: #001080">id:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;main&quot;</span><span style="color: #000000">,</span>
 <span style="color: #000000">        </span><span style="color: #001080">host:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;localhost&quot;</span><span style="color: #000000">,</span>
 <span style="color: #000000">        </span><span style="color: #001080">port:</span><span style="color: #000000"> </span><span style="color: #098658">2333</span><span style="color: #000000">,</span>
-<span style="color: #000000">        </span><span style="color: #001080">password:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;youshallnotpass&quot;</span>
+<span style="color: #000000">        </span><span style="color: #001080">password:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;youshallnotpass&quot;</span><span style="color: #000000">,</span>
+<span style="color: #000000">        </span><span style="color: #001080">secure:</span><span style="color: #000000"> </span><span style="color: #0000FF">false</span>
 <span style="color: #000000">    }</span>
 <span style="color: #000000">]);</span>
 
 <span style="color: #000000">(</span><span style="color: #0000FF">async</span><span style="color: #000000"> () </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
-<span style="color: #000000">    </span><span style="color: #008000">// We need to call this to get the Spotify API access token.</span>
+<span style="color: #000000">    </span><span style="color: #008000">// We need to call this to get the Spotify API access token (only needs once after the LavasfyClient instantiated).</span>
 <span style="color: #000000">    </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">lavasfy</span><span style="color: #000000">.</span><span style="color: #795E26">requestToken</span><span style="color: #000000">();</span>
 
 <span style="color: #000000">    </span><span style="color: #008000">// Select node to use with its id.</span>
-<span style="color: #000000">    </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">node</span><span style="color: #000000"> = </span><span style="color: #001080">lavasfy</span><span style="color: #000000">.</span><span style="color: #001080">nodes</span><span style="color: #000000">.</span><span style="color: #795E26">get</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;main&quot;</span><span style="color: #000000">);</span>
+<span style="color: #000000">    </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">node</span><span style="color: #000000"> = </span><span style="color: #001080">lavasfy</span><span style="color: #000000">.</span><span style="color: #795E26">getNode</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;main&quot;</span><span style="color: #000000">);</span>
 
 <span style="color: #000000">    </span><span style="color: #008000">// Use Node#load to load album, playlist, and track</span>
 <span style="color: #000000">    </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">album</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">node</span><span style="color: #000000">.</span><span style="color: #795E26">load</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;https://open.spotify.com/album/4sZni6V6NvVYhfUFGqKuR3&quot;</span><span style="color: #000000">);</span>
@@ -136,7 +137,7 @@
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/lavalinktrack.html" class="tsd-kind-icon">Lavalink<wbr>Track</a>
 					</li>
-					<li class=" tsd-kind-interface">
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
 						<a href="interfaces/lavalinktrackresponse.html" class="tsd-kind-icon">Lavalink<wbr>Track<wbr>Response</a>
 					</li>
 					<li class=" tsd-kind-interface">
@@ -153,6 +154,9 @@
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/spotifytrack.html" class="tsd-kind-icon">Spotify<wbr>Track</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/unresolvedtrack.html" class="tsd-kind-icon">Unresolved<wbr>Track</a>
 					</li>
 				</ul>
 			</nav>
