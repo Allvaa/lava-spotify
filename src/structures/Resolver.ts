@@ -120,11 +120,16 @@ export default class Resolver {
         const params = new URLSearchParams({
             identifier: `ytsearch:${unresolvedTrack.info.author} - ${unresolvedTrack.info.title} ${this.client.options.audioOnlyResults ? "Audio" : ""}`
         });
-        // @ts-expect-error 2322
-        const { body: response }: { body: LavalinkTrackResponse<LavalinkTrack> } = await request
-            .get(`http${this.node.secure ? "s" : ""}://${this.node.host}:${this.node.port}/loadtracks?${params.toString()}`)
-            .set("Authorization", this.node.password);
-        return response.tracks[0];
+
+        try {
+            // @ts-expect-error 2322
+            const { body: response }: { body: LavalinkTrackResponse<LavalinkTrack> } = await request
+                .get(`http${this.node.secure ? "s" : ""}://${this.node.host}:${this.node.port}/loadtracks?${params.toString()}`)
+                .set("Authorization", this.node.password);
+            return response.tracks[0];
+        } catch {
+            return;
+        }
     }
 
     private buildUnresolved(spotifyTrack: SpotifyTrack): UnresolvedTrack {
